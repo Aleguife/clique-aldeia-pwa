@@ -1,12 +1,11 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BusinessCard } from '@/components/BusinessCard';
 import { Filters } from '@/components/Filters';
 import { useBusinessData } from '@/hooks/useBusinessData';
 
 const Search = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const {
     filteredBusinesses,
     searchTerm,
@@ -15,13 +14,88 @@ const Search = () => {
     setSelectedCategory
   } = useBusinessData();
 
+  // Additional filter states
+  const [sortBy, setSortBy] = useState('relevance');
+  const [minRating, setMinRating] = useState(0);
+  const [openNow, setOpenNow] = useState(false);
+
   // Handle URL parameters
   useEffect(() => {
+    const qParam = searchParams.get('q');
     const categoryParam = searchParams.get('category');
+    const sortParam = searchParams.get('sort');
+    const ratingParam = searchParams.get('rating');
+    const openParam = searchParams.get('open');
+
+    if (qParam) {
+      setSearchTerm(qParam);
+    }
     if (categoryParam) {
       setSelectedCategory(categoryParam);
     }
-  }, [searchParams, setSelectedCategory]);
+    if (sortParam) {
+      setSortBy(sortParam);
+    }
+    if (ratingParam) {
+      setMinRating(Number(ratingParam));
+    }
+    if (openParam === 'true') {
+      setOpenNow(true);
+    }
+  }, [searchParams, setSearchTerm, setSelectedCategory]);
+
+  // Update URL when filters change
+  useEffect(() => {
+    const params = new URLSearchParams();
+    
+    if (searchTerm) params.set('q', searchTerm);
+    if (selectedCategory) params.set('category', selectedCategory);
+    if (sortBy !== 'relevance') params.set('sort', sortBy);
+    if (minRating > 0) params.set('rating', minRating.toString());
+    if (openNow) params.set('open', 'true');
+
+    setSearchParams(params);
+  }, [searchTerm, selectedCategory, sortBy, minRating, openNow, setSearchParams]);
+
+  // Apply additional filtering and sorting
+  const getFilteredAndSortedBusinesses = () => {
+    let filtered = [...filteredBusinesses];
+
+    // Apply rating filter
+    if (minRating > 0) {
+      filtered = filtered.filter(business => business.rating >= minRating);
+    }
+
+    // Apply open now filter (simplified - would need actual business hours logic)
+    if (openNow) {
+      // For demo purposes, filter businesses that might be open
+      // In real implementation, you'd check actual hours against current time
+      filtered = filtered.filter(business => {
+        const now = new Date();
+        const currentHour = now.getHours();
+        return currentHour >= 8 && currentHour <= 22; // Simple demo logic
+      });
+    }
+
+    // Apply sorting
+    switch (sortBy) {
+      case 'rating':
+        filtered.sort((a, b) => b.rating - a.rating);
+        break;
+      case 'distance':
+        // For demo purposes, sort by name length as distance placeholder
+        filtered.sort((a, b) => a.name.length - b.name.length);
+        break;
+      case 'relevance':
+      default:
+        // Keep original order for relevance
+        break;
+    }
+
+    return filtered;
+  };
+
+  const finalBusinesses = getFilteredAndSortedBusinesses();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -35,25 +109,38 @@ const Search = () => {
       </div>
 
       <div className="space-y-6">
-        {/* Filters */}
+        {/* Enhanced Filters */}
         <Filters
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+          minRating={minRating}
+          setMinRating={setMinRating}
+          openNow={openNow}
+          setOpenNow={setOpenNow}
         />
 
         {/* Results */}
         <div>
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-semibold text-gray-900">
-              {filteredBusinesses.length} estabelecimento{filteredBusinesses.length !== 1 ? 's' : ''} encontrado{filteredBusinesses.length !== 1 ? 's' : ''}
+              {finalBusinesses.length} estabelecimento{finalBusinesses.length !== 1 ? 's' : ''} encontrado{finalBusinesses.length !== 1 ? 's' : ''}
+              {searchTerm && ` para "${searchTerm}"`}
+              {selectedCategory && ` em ${selectedCategory}`}
             </h2>
+            {sortBy !== 'relevance' && (
+              <div className="text-sm text-gray-500">
+                Ordenado por {sortBy === 'rating' ? 'avaliação' : sortBy === 'distance' ? 'distância' : 'relevância'}
+              </div>
+            )}
           </div>
 
-          {filteredBusinesses.length > 0 ? (
+          {finalBusinesses.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredBusinesses.map((business) => (
+              {finalBusinesses.map((business) => (
                 <BusinessCard key={business.id} business={business} />
               ))}
             </div>

@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Utensils, Heart, Wrench, Home, Shirt } from 'lucide-react';
+import { Utensils, Heart, Wrench, Home, Shirt } from 'lucide-react';
+import { SearchBar } from '@/components/SearchBar';
 
 interface Category {
   name: string;
@@ -17,12 +17,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ categories }) => {
   // Modern category icons mapping
   const categoryIcons = {
     'Gastronomia': Utensils,
-    'Beleza': Heart, // Using Heart as placeholder for makeup brush
+    'Beleza': Heart,
     'Saúde': Heart,
     'Serviços': Wrench,
     'Casa & Construção': Home,
-    'Pet': Heart, // Using Heart as placeholder for paw
-    'Esporte': Heart, // Using Heart as placeholder for sports
+    'Pet': Heart,
+    'Esporte': Heart,
     'Moda': Shirt,
   };
 
@@ -47,18 +47,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ categories }) => {
             </p>
           </div>
 
-          {/* CTA Button */}
+          {/* Search Bar */}
           <div className="pt-8">
-            <Button 
-              size="lg" 
-              className="bg-white text-blue-600 hover:bg-blue-50 font-semibold text-lg px-12 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl" 
-              asChild
-            >
-              <Link to="/search">
-                Explorar Agora
-                <ArrowRight className="ml-3 w-5 h-5" />
-              </Link>
-            </Button>
+            <SearchBar variant="hero" />
           </div>
 
           {/* Categories Preview */}
