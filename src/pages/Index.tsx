@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BusinessCard } from '@/components/BusinessCard';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, MapPin, Clock, Users, Calendar } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, Users, Calendar, Utensils, Heart, Wrench, Home, SoccerBall, Shirt } from 'lucide-react';
 import { useBusinessData } from '@/hooks/useBusinessData';
 
 const Index = () => {
@@ -15,15 +15,27 @@ const Index = () => {
   const featuredBusinesses = businesses.slice(0, 6);
   const upcomingEvents = events.slice(0, 3);
 
+  // Modern category icons mapping
+  const categoryIcons = {
+    'Gastronomia': Utensils,
+    'Beleza': Heart, // Using Heart as placeholder for makeup brush
+    'Saúde': Heart,
+    'Serviços': Wrench,
+    'Casa & Construção': Home,
+    'Pet': Heart, // Using Heart as placeholder for paw
+    'Esporte': SoccerBall,
+    'Moda': Shirt,
+  };
+
   return (
     <div className="min-h-screen">
-      {/* Simplified Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      {/* Refined Hero Section - 60vh */}
+      <section className="relative h-[60vh] flex items-center justify-center">
         {/* Clean gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-green-600" />
 
         {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             {/* Main Heading */}
             <div className="space-y-6">
@@ -51,6 +63,31 @@ const Index = () => {
                 </Link>
               </Button>
             </div>
+
+            {/* Categories Preview */}
+            <div className="pt-8">
+              <div className="grid grid-cols-4 md:grid-cols-8 gap-4 max-w-2xl mx-auto">
+                {categories.slice(0, 8).map((category) => {
+                  const IconComponent = categoryIcons[category.name] || Utensils;
+                  return (
+                    <Link
+                      key={category.name}
+                      to={`/search?category=${encodeURIComponent(category.name)}`}
+                      className="group"
+                    >
+                      <div className="flex flex-col items-center space-y-2 text-white/80 hover:text-white transition-all duration-300 group-hover:scale-110">
+                        <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-all">
+                          <IconComponent size={20} />
+                        </div>
+                        <span className="text-xs font-medium text-center leading-tight">
+                          {category.name}
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -66,24 +103,27 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {categories.map((category) => (
-              <Link
-                key={category.name}
-                to={`/search?category=${encodeURIComponent(category.name)}`}
-                className="group"
-              >
-                <Card className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer bg-white">
-                  <CardContent className="p-6">
-                    <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">
-                      {category.icon}
-                    </div>
-                    <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                      {category.name}
-                    </h3>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+            {categories.map((category) => {
+              const IconComponent = categoryIcons[category.name] || Utensils;
+              return (
+                <Link
+                  key={category.name}
+                  to={`/search?category=${encodeURIComponent(category.name)}`}
+                  className="group"
+                >
+                  <Card className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer bg-white">
+                    <CardContent className="p-6">
+                      <div className="text-blue-600 mb-3 group-hover:scale-110 transition-transform flex justify-center">
+                        <IconComponent size={32} />
+                      </div>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                        {category.name}
+                      </h3>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })}
           </div>
         </section>
 
