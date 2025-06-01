@@ -11,11 +11,12 @@ const Index = () => {
   const { businesses, events, categories } = useBusinessData();
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <HeroSection categories={categories} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+      {/* Main content with enhanced spacing */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
         {/* Categories Section */}
         <CategoriesSection categories={categories} />
 
