@@ -1,10 +1,11 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BusinessCard } from '@/components/BusinessCard';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, MapPin, Clock, Users, Calendar, Utensils, Heart, Wrench, Home, Football, Shirt } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, Users, Calendar, Utensils, Heart, Wrench, Home, Shirt } from 'lucide-react';
 import { useBusinessData } from '@/hooks/useBusinessData';
 
 const Index = () => {
@@ -22,7 +23,7 @@ const Index = () => {
     'Serviços': Wrench,
     'Casa & Construção': Home,
     'Pet': Heart, // Using Heart as placeholder for paw
-    'Esporte': Football,
+    'Esporte': Heart, // Using Heart as placeholder for sports
     'Moda': Shirt,
   };
 
