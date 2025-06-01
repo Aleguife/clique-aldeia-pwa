@@ -1,19 +1,17 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Utensils, Heart, Wrench, Home, Shirt } from 'lucide-react';
 import { SearchBar } from '@/components/SearchBar';
-
 interface Category {
   name: string;
   icon: string;
 }
-
 interface HeroSectionProps {
   categories: Category[];
 }
-
-export const HeroSection: React.FC<HeroSectionProps> = ({ categories }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({
+  categories
+}) => {
   // Modern category icons mapping
   const categoryIcons = {
     'Gastronomia': Utensils,
@@ -23,11 +21,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ categories }) => {
     'Casa & Construção': Home,
     'Pet': Heart,
     'Esporte': Heart,
-    'Moda': Shirt,
+    'Moda': Shirt
   };
-
-  return (
-    <section className="relative h-[60vh] flex items-center justify-center">
+  return <section className="relative h-[50vh] flex items-center justify-center">
       {/* Clean gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-green-600" />
 
@@ -36,7 +32,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ categories }) => {
         <div className="space-y-8">
           {/* Main Heading */}
           <div className="space-y-6">
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
+            <h1 className="lg:text-6xl font-bold leading-tight tracking-tight text-white text-6xl">
               Descubra
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-green-300">
                 Aldeia da Serra
@@ -55,14 +51,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ categories }) => {
           {/* Categories Preview */}
           <div className="pt-8">
             <div className="grid grid-cols-4 md:grid-cols-8 gap-4 max-w-2xl mx-auto">
-              {categories.slice(0, 8).map((category) => {
-                const IconComponent = categoryIcons[category.name] || Utensils;
-                return (
-                  <Link
-                    key={category.name}
-                    to={`/search?category=${encodeURIComponent(category.name)}`}
-                    className="group"
-                  >
+              {categories.slice(0, 8).map(category => {
+              const IconComponent = categoryIcons[category.name] || Utensils;
+              return <Link key={category.name} to={`/search?category=${encodeURIComponent(category.name)}`} className="group">
                     <div className="flex flex-col items-center space-y-2 text-white/80 hover:text-white transition-all duration-300 group-hover:scale-110">
                       <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-all">
                         <IconComponent size={20} />
@@ -71,13 +62,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ categories }) => {
                         {category.name}
                       </span>
                     </div>
-                  </Link>
-                );
-              })}
+                  </Link>;
+            })}
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
