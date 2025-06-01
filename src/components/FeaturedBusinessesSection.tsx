@@ -14,22 +14,13 @@ export const FeaturedBusinessesSection: React.FC<FeaturedBusinessesSectionProps>
   const featuredBusinesses = businesses.slice(0, 6);
 
   return (
-    <section className="space-y-10">
-      {/* Improved typography hierarchy */}
-      <div className="flex items-end justify-between">
-        <div className="space-y-3">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-            Estabelecimentos em Destaque
-          </h2>
-          <p className="text-lg text-gray-600 font-medium max-w-2xl">
-            Conheça os favoritos da nossa comunidade e descubra novos lugares especiais
-          </p>
+    <section>
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Estabelecimentos em Destaque</h2>
+          <p className="text-gray-600">Conheça os favoritos da nossa comunidade</p>
         </div>
-        <Button 
-          variant="outline" 
-          className="hidden md:flex border-blue-300 text-blue-600 hover:bg-blue-50 hover:border-blue-400 font-semibold transition-all duration-200" 
-          asChild
-        >
+        <Button variant="outline" asChild>
           <Link to="/search">
             Ver Todos
             <ArrowRight className="ml-2 w-4 h-4" />
@@ -37,25 +28,10 @@ export const FeaturedBusinessesSection: React.FC<FeaturedBusinessesSectionProps>
         </Button>
       </div>
       
-      {/* Enhanced grid with better spacing */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {featuredBusinesses.map((business) => (
           <BusinessCard key={business.id} business={business} />
         ))}
-      </div>
-
-      {/* Mobile "Ver Todos" button */}
-      <div className="flex justify-center md:hidden">
-        <Button 
-          variant="outline" 
-          className="border-blue-300 text-blue-600 hover:bg-blue-50 hover:border-blue-400 font-semibold transition-all duration-200" 
-          asChild
-        >
-          <Link to="/search">
-            Ver Todos os Estabelecimentos
-            <ArrowRight className="ml-2 w-4 h-4" />
-          </Link>
-        </Button>
       </div>
     </section>
   );

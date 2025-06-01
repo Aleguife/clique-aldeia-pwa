@@ -25,47 +25,30 @@ export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ categories
     'Moda': Shirt,
   };
 
-  const categoryColors = {
-    'Gastronomia': 'text-orange-600 group-hover:text-orange-700',
-    'Beleza': 'text-pink-600 group-hover:text-pink-700',
-    'Saúde': 'text-green-600 group-hover:text-green-700',
-    'Serviços': 'text-blue-600 group-hover:text-blue-700',
-    'Casa & Construção': 'text-yellow-600 group-hover:text-yellow-700',
-    'Pet': 'text-purple-600 group-hover:text-purple-700',
-    'Esporte': 'text-red-600 group-hover:text-red-700',
-    'Moda': 'text-indigo-600 group-hover:text-indigo-700',
-  };
-
   return (
-    <section className="space-y-10">
-      {/* Enhanced section header */}
-      <div className="text-center space-y-4">
-        <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-          Explore por Categoria
-        </h2>
-        <p className="text-lg text-gray-600 font-medium max-w-3xl mx-auto leading-relaxed">
-          Encontre exatamente o que você precisa na sua região com nossa seleção organizada
+    <section>
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Explore por Categoria</h2>
+        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          Encontre exatamente o que você precisa na sua região
         </p>
       </div>
       
-      {/* Enhanced grid with better spacing and animations */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {categories.map((category) => {
           const IconComponent = categoryIcons[category.name] || Utensils;
-          const colorClass = categoryColors[category.name] || 'text-blue-600 group-hover:text-blue-700';
-          
           return (
             <Link
               key={category.name}
               to={`/search?category=${encodeURIComponent(category.name)}`}
               className="group"
             >
-              <Card className="text-center bg-white border border-gray-200 hover:border-blue-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer rounded-2xl h-full">
-                <CardContent className="p-8 flex flex-col items-center space-y-4">
-                  <div className={`${colorClass} transition-all duration-300 group-hover:scale-110`}>
-                    <IconComponent size={40} strokeWidth={1.5} />
+              <Card className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer bg-white">
+                <CardContent className="p-6">
+                  <div className="text-blue-600 mb-3 group-hover:scale-110 transition-transform flex justify-center">
+                    <IconComponent size={32} />
                   </div>
-                  <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-200 text-lg">
+                  <h3 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                     {category.name}
                   </h3>
                 </CardContent>
