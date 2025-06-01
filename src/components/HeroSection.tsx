@@ -23,7 +23,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     'Esporte': Heart,
     'Moda': Shirt
   };
-  return <section className="relative h-[50vh] flex items-center justify-center">
+  return <section className="relative h-[60vh] flex items-center justify-center">
       {/* Clean gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-green-600" />
 
