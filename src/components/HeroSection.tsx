@@ -38,7 +38,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 Aldeia da Serra
               </span>
             </h1>
-            <p className="text-white/90 max-w-3xl mx-auto leading-relaxed text-base lg:text-2xl">A plataforma que conecta você aos melhores estabelecimentos e eventos da nossa região.</p>
+            <p className="text-white/90 max-w-3xl mx-auto leading-relaxed text-base lg:text-xl">A plataforma que conecta você aos melhores estabelecimentos e eventos da nossa região.</p>
           </div>
 
           {/* Search Bar */}
