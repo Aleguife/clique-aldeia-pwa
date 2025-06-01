@@ -32,7 +32,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="space-y-8">
           {/* Main Heading */}
           <div className="space-y-6">
-            <h1 className="lg:text-6xl font-bold leading-tight tracking-tight text-white text-6xl">
+            <h1 className="font-bold leading-tight tracking-tight text-white text-6xl lg:text-7xl">
               Descubra
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-green-300">
                 Aldeia da Serra
