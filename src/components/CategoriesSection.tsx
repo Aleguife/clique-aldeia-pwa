@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
-import { Utensils, Heart, Wrench, Home, Shirt } from 'lucide-react';
+import { Utensils, Heart, HeartPulse, Wrench, Home, PawPrint, Dumbbell, Brush } from 'lucide-react';
 
 interface Category {
   name: string;
@@ -14,15 +14,16 @@ interface CategoriesSectionProps {
 }
 
 export const CategoriesSection: React.FC<CategoriesSectionProps> = ({ categories }) => {
+  // Unified category icons mapping
   const categoryIcons = {
     'Gastronomia': Utensils,
     'Beleza': Heart,
-    'Saúde': Heart,
+    'Saúde': HeartPulse,
     'Serviços': Wrench,
     'Casa & Construção': Home,
-    'Pet': Heart,
-    'Esporte': Heart,
-    'Moda': Shirt,
+    'Pet': PawPrint,
+    'Esporte': Dumbbell,
+    'Moda': Brush,
   };
 
   return (

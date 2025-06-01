@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, X, Filter, Star, Clock, MapPin } from 'lucide-react';
+import { Search, X, Filter, Star, Clock, MapPin, Utensils, Heart, HeartPulse, Wrench, Home, PawPrint, Dumbbell, Brush } from 'lucide-react';
 import { categories } from '@/hooks/useBusinessData';
 
 interface FiltersProps {
@@ -32,6 +32,18 @@ export const Filters: React.FC<FiltersProps> = ({
   openNow,
   setOpenNow
 }) => {
+  // Unified category icons mapping
+  const categoryIcons = {
+    'Gastronomia': Utensils,
+    'Beleza': Heart,
+    'Saúde': HeartPulse,
+    'Serviços': Wrench,
+    'Casa & Construção': Home,
+    'Pet': PawPrint,
+    'Esporte': Dumbbell,
+    'Moda': Brush,
+  };
+
   const sortOptions = [
     { value: 'relevance', label: 'Relevância', icon: Filter },
     { value: 'rating', label: 'Avaliação', icon: Star },
@@ -159,19 +171,22 @@ export const Filters: React.FC<FiltersProps> = ({
           >
             Todas
           </Badge>
-          {categories.map((category) => (
-            <Badge
-              key={category.name}
-              variant={selectedCategory === category.name ? 'default' : 'secondary'}
-              className="cursor-pointer hover:bg-blue-100 transition-colors"
-              onClick={() => setSelectedCategory(
-                selectedCategory === category.name ? '' : category.name
-              )}
-            >
-              <span className="mr-1">{category.icon}</span>
-              {category.name}
-            </Badge>
-          ))}
+          {categories.map((category) => {
+            const IconComponent = categoryIcons[category.name] || Utensils;
+            return (
+              <Badge
+                key={category.name}
+                variant={selectedCategory === category.name ? 'default' : 'secondary'}
+                className="cursor-pointer hover:bg-blue-100 transition-colors"
+                onClick={() => setSelectedCategory(
+                  selectedCategory === category.name ? '' : category.name
+                )}
+              >
+                <IconComponent className="w-3 h-3 mr-1" />
+                {category.name}
+              </Badge>
+            );
+          })}
         </div>
       </div>
 

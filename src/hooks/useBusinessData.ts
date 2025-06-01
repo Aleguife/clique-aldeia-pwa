@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from 'react';
 
 export interface Business {
@@ -32,14 +31,14 @@ export interface Event {
 }
 
 export const categories = [
-  { name: 'Gastronomia', icon: '🍽️' },
-  { name: 'Beleza', icon: '💄' },
-  { name: 'Saúde', icon: '⚕️' },
-  { name: 'Serviços', icon: '🔧' },
-  { name: 'Casa & Construção', icon: '🏠' },
-  { name: 'Pet', icon: '🐕' },
-  { name: 'Esporte', icon: '⚽' },
-  { name: 'Moda', icon: '👕' }
+  { name: 'Gastronomia', icon: 'Utensils' },
+  { name: 'Beleza', icon: 'Heart' },
+  { name: 'Saúde', icon: 'HeartPulse' },
+  { name: 'Serviços', icon: 'Wrench' },
+  { name: 'Casa & Construção', icon: 'Home' },
+  { name: 'Pet', icon: 'PawPrint' },
+  { name: 'Esporte', icon: 'Dumbbell' },
+  { name: 'Moda', icon: 'Brush' }
 ];
 
 export const useBusinessData = () => {
