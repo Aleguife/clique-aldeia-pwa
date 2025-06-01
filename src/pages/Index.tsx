@@ -2,7 +2,6 @@
 import React from 'react';
 import { useBusinessData } from '@/hooks/useBusinessData';
 import { HeroSection } from '@/components/HeroSection';
-import { CategoriesSection } from '@/components/CategoriesSection';
 import { FeaturedBusinessesSection } from '@/components/FeaturedBusinessesSection';
 import { UpcomingEventsSection } from '@/components/UpcomingEventsSection';
 import { CTASection } from '@/components/CTASection';
@@ -16,9 +15,6 @@ const Index = () => {
       <HeroSection categories={categories} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
-        {/* Categories Section */}
-        <CategoriesSection categories={categories} />
-
         {/* Featured Businesses */}
         <FeaturedBusinessesSection businesses={businesses} />
 
