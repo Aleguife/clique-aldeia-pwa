@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,7 +6,7 @@ import { BusinessCard } from '@/components/BusinessCard';
 import { Badge } from '@/components/ui/badge';
 import { FloatingIcons } from '@/components/FloatingIcons';
 import { HeroSearch } from '@/components/HeroSearch';
-import { ArrowRight, MapPin, Clock, Users, Sparkles, TrendingUp, Shield } from 'lucide-react';
+import { ArrowRight, MapPin, Clock, Users, Sparkles, TrendingUp, Shield, Calendar } from 'lucide-react';
 import { useBusinessData } from '@/hooks/useBusinessData';
 
 const Index = () => {
