@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Utensils, Heart, Wrench, Home, Shirt } from 'lucide-react';
@@ -39,9 +38,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 Aldeia da Serra
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              A plataforma que conecta você aos melhores estabelecimentos e eventos da nossa região.
-            </p>
+            <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed lg:text-3xl">A plataforma que conecta você aos melhores estabelecimentos e eventos da nossa região.</p>
           </div>
 
           {/* Search Bar */}
