@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Utensils, Heart, Wrench, Home, Shirt } from 'lucide-react';
@@ -45,20 +46,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Search Bar */}
           <div className="pt-8">
-            <SearchBar variant="hero" />
+            <div className="max-w-3xl mx-auto">
+              <SearchBar variant="hero" />
+            </div>
           </div>
 
           {/* Categories Preview */}
           <div className="pt-8">
-            <div className="grid grid-cols-4 md:grid-cols-8 gap-4 max-w-2xl mx-auto">
+            <div className="grid grid-cols-4 md:grid-cols-8 gap-6 max-w-3xl mx-auto">
               {categories.slice(0, 8).map(category => {
               const IconComponent = categoryIcons[category.name] || Utensils;
               return <Link key={category.name} to={`/search?category=${encodeURIComponent(category.name)}`} className="group">
-                    <div className="flex flex-col items-center space-y-2 text-white/80 hover:text-white transition-all duration-300 group-hover:scale-110">
-                      <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-all">
-                        <IconComponent size={20} />
+                    <div className="flex flex-col items-center space-y-3 text-white/80 hover:text-white transition-all duration-300 group-hover:scale-110">
+                      <div className="w-14 h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-all">
+                        <IconComponent size={24} />
                       </div>
-                      <span className="text-xs font-medium text-center leading-tight">
+                      <span className="text-sm font-medium text-center leading-tight">
                         {category.name}
                       </span>
                     </div>

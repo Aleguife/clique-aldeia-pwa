@@ -85,9 +85,9 @@ export const SearchBar: React.FC<SearchBarProps> = ({ variant = 'hero', classNam
 
   return (
     <div className={`relative ${className}`}>
-      <div className={`flex ${isHeroVariant ? 'max-w-2xl mx-auto' : 'w-full'}`}>
+      <div className={`flex ${isHeroVariant ? 'w-full' : 'w-full'}`}>
         <div className="relative flex-1">
-          <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 ${isHeroVariant ? 'w-5 h-5' : 'w-4 h-4'}`} />
+          <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 ${isHeroVariant ? 'w-6 h-6' : 'w-4 h-4'}`} />
           <Input
             ref={inputRef}
             type="text"
@@ -102,7 +102,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ variant = 'hero', classNam
             onKeyDown={handleKeyDown}
             className={`
               ${isHeroVariant 
-                ? 'pl-12 pr-4 py-4 text-lg rounded-l-2xl border-r-0 focus:ring-2 focus:ring-white/20' 
+                ? 'pl-14 pr-4 py-5 text-lg rounded-l-2xl border-r-0 focus:ring-2 focus:ring-white/20 h-14' 
                 : 'pl-10 pr-4'
               }
               ${isHeroVariant ? 'rounded-r-none' : ''}
@@ -113,7 +113,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ variant = 'hero', classNam
           onClick={handleSearch}
           className={`
             ${isHeroVariant 
-              ? 'bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-4 text-lg rounded-l-none rounded-r-2xl border-l-0' 
+              ? 'bg-white text-blue-600 hover:bg-blue-50 font-semibold px-10 py-5 text-lg rounded-l-none rounded-r-2xl border-l-0 h-14' 
               : 'rounded-l-none'
             }
           `}
@@ -129,7 +129,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ variant = 'hero', classNam
           ref={suggestionsRef}
           className={`
             absolute top-full left-0 right-0 z-50 bg-white border border-gray-200 rounded-lg shadow-lg mt-1
-            ${isHeroVariant ? 'max-w-2xl mx-auto' : 'w-full'}
+            ${isHeroVariant ? 'w-full' : 'w-full'}
           `}
         >
           {suggestions.map((business, index) => (
