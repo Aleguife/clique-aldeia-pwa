@@ -9,9 +9,9 @@ export const BusinessPlansPlans: React.FC = () => {
   const plans = [
     {
       name: 'Básico',
-      price: 'R$ 99',
-      period: '/mês',
-      description: 'Ideal para pequenos negócios',
+      price: 'R$ 0',
+      period: '',
+      description: 'Grátis para sempre',
       features: [
         'Perfil completo do estabelecimento',
         'Galeria de até 5 fotos',
@@ -23,7 +23,7 @@ export const BusinessPlansPlans: React.FC = () => {
     },
     {
       name: 'Profissional',
-      price: 'R$ 199',
+      price: 'R$ 29,90',
       period: '/mês',
       description: 'Para negócios em crescimento',
       features: [
@@ -38,9 +38,9 @@ export const BusinessPlansPlans: React.FC = () => {
     },
     {
       name: 'Premium',
-      price: 'R$ 299',
+      price: 'R$ 67,90',
       period: '/mês',
-      description: 'Máxima visibilidade',
+      description: 'Máximo resultado',
       features: [
         'Tudo do plano Profissional',
         'Banner destacado na página inicial',
@@ -78,7 +78,7 @@ export const BusinessPlansPlans: React.FC = () => {
               <div className="space-y-2">
                 <div className="flex items-baseline justify-center">
                   <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                  <span className="text-gray-500 ml-1">{plan.period}</span>
+                  {plan.period && <span className="text-gray-500 ml-1">{plan.period}</span>}
                 </div>
                 <p className="text-gray-600">{plan.description}</p>
               </div>
