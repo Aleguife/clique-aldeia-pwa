@@ -17,6 +17,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   // Páginas que não mostram a navegação
   const noNavPages = ['/login', '/register', '/planos'];
   const showNavigation = !noNavPages.includes(location.pathname);
+  
+  // Páginas que não mostram o footer original
+  const noFooterPages = ['/planos'];
+  const showFooter = !noFooterPages.includes(location.pathname);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -26,7 +30,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         {children}
       </main>
       
-      <Footer />
+      {showFooter && <Footer />}
       
       {showNavigation && isMobile && <BottomNavigation />}
     </div>
