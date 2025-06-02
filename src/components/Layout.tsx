@@ -3,6 +3,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { BottomNavigation } from './BottomNavigation';
 import { HeaderNavigation } from './HeaderNavigation';
+import { Footer } from './Footer';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface LayoutProps {
@@ -18,12 +19,14 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const showNavigation = !noNavPages.includes(location.pathname);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       {showNavigation && !isMobile && <HeaderNavigation />}
       
-      <main className={`${showNavigation && !isMobile ? 'pt-16' : ''} ${showNavigation && isMobile ? 'pb-20' : ''}`}>
+      <main className={`flex-1 ${showNavigation && !isMobile ? 'pt-16' : ''} ${showNavigation && isMobile ? 'pb-20' : ''}`}>
         {children}
       </main>
+      
+      <Footer />
       
       {showNavigation && isMobile && <BottomNavigation />}
     </div>

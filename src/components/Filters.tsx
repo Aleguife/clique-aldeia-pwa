@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, X, Filter, Star, Clock, MapPin, Utensils, Heart, HeartPulse, Wrench, Home, PawPrint, Dumbbell, Brush } from 'lucide-react';
-import { categories } from '@/hooks/useBusinessData';
+import { useBusinessData } from '@/hooks/useBusinessData';
 
 interface FiltersProps {
   searchTerm: string;
@@ -32,6 +31,8 @@ export const Filters: React.FC<FiltersProps> = ({
   openNow,
   setOpenNow
 }) => {
+  const { categories } = useBusinessData();
+
   // Unified category icons mapping
   const categoryIcons = {
     'Gastronomia': Utensils,

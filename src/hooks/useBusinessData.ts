@@ -3,9 +3,8 @@ import { businesses } from '@/data/businessData';
 import { events } from '@/data/eventData';
 import { categories } from '@/data/categories';
 import { useBusinessFilters } from '@/hooks/useBusinessFilters';
-import { Business, Event, Category } from '@/types/business';
 
-export { Business, Event, Category };
+export type { Business, Event, Category } from '@/types/business';
 
 export const useBusinessData = () => {
   const {
