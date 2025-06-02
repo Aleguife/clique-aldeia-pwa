@@ -10,7 +10,8 @@ import { BusinessPlansPlans } from '@/components/business-plans/BusinessPlansPla
 import { BusinessPlansSocialProof } from '@/components/business-plans/BusinessPlansSocialProof';
 import { BusinessPlansTestimonials } from '@/components/business-plans/BusinessPlansTestimonials';
 import { BusinessPlansCTA } from '@/components/business-plans/BusinessPlansCTA';
-import { BusinessPlansContact } from '@/components/business-plans/BusinessPlansContact';
+import { BusinessPlansFooter } from '@/components/business-plans/BusinessPlansFooter';
+import { WhatsAppButton } from '@/components/business-plans/WhatsAppButton';
 
 const BusinessPlans = () => {
   return (
@@ -46,10 +47,13 @@ const BusinessPlans = () => {
 
         {/* CTA Section */}
         <BusinessPlansCTA />
-
-        {/* Contact Form */}
-        <BusinessPlansContact />
       </div>
+
+      {/* Minimal Footer */}
+      <BusinessPlansFooter />
+
+      {/* Floating WhatsApp Button */}
+      <WhatsAppButton />
     </div>
   );
 };
