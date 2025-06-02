@@ -9,7 +9,201 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      categories: {
+        Row: {
+          created_at: string | null
+          icon: string
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string | null
+          icon: string
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string | null
+          icon?: string
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      establishments: {
+        Row: {
+          address: string
+          category_id: string | null
+          created_at: string | null
+          description: string | null
+          features: string[] | null
+          full_description: string | null
+          gallery: string[] | null
+          hours: Json | null
+          id: string
+          image: string | null
+          name: string
+          phone: string | null
+          rating: number | null
+          reviews: number | null
+          updated_at: string | null
+          whatsapp: string | null
+        }
+        Insert: {
+          address: string
+          category_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          features?: string[] | null
+          full_description?: string | null
+          gallery?: string[] | null
+          hours?: Json | null
+          id?: string
+          image?: string | null
+          name: string
+          phone?: string | null
+          rating?: number | null
+          reviews?: number | null
+          updated_at?: string | null
+          whatsapp?: string | null
+        }
+        Update: {
+          address?: string
+          category_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          features?: string[] | null
+          full_description?: string | null
+          gallery?: string[] | null
+          hours?: Json | null
+          id?: string
+          image?: string | null
+          name?: string
+          phone?: string | null
+          rating?: number | null
+          reviews?: number | null
+          updated_at?: string | null
+          whatsapp?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "establishments_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      events: {
+        Row: {
+          created_at: string | null
+          date: string
+          description: string | null
+          establishment_id: string | null
+          event_type: string
+          id: string
+          image: string | null
+          location: string
+          organizer: string
+          time: string
+          title: string
+        }
+        Insert: {
+          created_at?: string | null
+          date: string
+          description?: string | null
+          establishment_id?: string | null
+          event_type: string
+          id?: string
+          image?: string | null
+          location: string
+          organizer: string
+          time: string
+          title: string
+        }
+        Update: {
+          created_at?: string | null
+          date?: string
+          description?: string | null
+          establishment_id?: string | null
+          event_type?: string
+          id?: string
+          image?: string | null
+          location?: string
+          organizer?: string
+          time?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_establishment_id_fkey"
+            columns: ["establishment_id"]
+            isOneToOne: false
+            referencedRelation: "establishments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      favorites: {
+        Row: {
+          created_at: string | null
+          establishment_id: string | null
+          id: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          establishment_id?: string | null
+          id?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          establishment_id?: string | null
+          id?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_establishment_id_fkey"
+            columns: ["establishment_id"]
+            isOneToOne: false
+            referencedRelation: "establishments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar: string | null
+          created_at: string | null
+          email: string
+          id: string
+          name: string
+          updated_at: string | null
+          user_type: string | null
+        }
+        Insert: {
+          avatar?: string | null
+          created_at?: string | null
+          email: string
+          id: string
+          name: string
+          updated_at?: string | null
+          user_type?: string | null
+        }
+        Update: {
+          avatar?: string | null
+          created_at?: string | null
+          email?: string
+          id?: string
+          name?: string
+          updated_at?: string | null
+          user_type?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

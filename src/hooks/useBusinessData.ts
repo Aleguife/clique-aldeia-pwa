@@ -1,12 +1,21 @@
 
-import { businesses } from '@/data/businessData';
-import { events } from '@/data/eventData';
-import { categories } from '@/data/categories';
+import { useSupabaseData } from '@/hooks/useSupabaseData';
 import { useBusinessFilters } from '@/hooks/useBusinessFilters';
 
-export type { Business, Event, Category } from '@/types/business';
+export type { Business, Event, Category, Profile, Favorite } from '@/types/business';
 
 export const useBusinessData = () => {
+  const {
+    businesses,
+    events,
+    categories,
+    loading,
+    error,
+    getBusinessById,
+    getEventsByType,
+    refreshData
+  } = useSupabaseData();
+
   const {
     searchTerm,
     setSearchTerm,
@@ -15,25 +24,19 @@ export const useBusinessData = () => {
     filteredBusinesses
   } = useBusinessFilters(businesses);
 
-  const getBusinessById = (id: string) => {
-    return businesses.find(business => business.id === id);
-  };
-
-  const getEventsByType = (type?: 'comercial' | 'comunitario') => {
-    if (!type) return events;
-    return events.filter(event => event.type === type);
-  };
-
   return {
     businesses,
     events,
     categories,
+    loading,
+    error,
     filteredBusinesses,
     searchTerm,
     setSearchTerm,
     selectedCategory,
     setSelectedCategory,
     getBusinessById,
-    getEventsByType
+    getEventsByType,
+    refreshData
   };
 };

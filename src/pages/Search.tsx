@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BusinessCard } from '@/components/BusinessCard';
@@ -11,7 +12,9 @@ const Search = () => {
     searchTerm,
     setSearchTerm,
     selectedCategory,
-    setSelectedCategory
+    setSelectedCategory,
+    loading,
+    error
   } = useBusinessData();
 
   // Additional filter states
@@ -94,6 +97,34 @@ const Search = () => {
 
     return filtered;
   };
+
+  if (loading) {
+    return (
+      <div className="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex items-center justify-center py-12">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <span className="ml-3">Carregando estabelecimentos...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="text-center py-12">
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Erro ao carregar dados</h2>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Tentar novamente
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const finalBusinesses = getFilteredAndSortedBusinesses();
 
