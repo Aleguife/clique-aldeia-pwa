@@ -126,9 +126,7 @@ const BusinessPlans = () => {
                 coração de Aldeia da Serra
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto">
-              Conecte-se com mais de 5.000 moradores locais e multiplique suas vendas
-            </p>
+            <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto">Conecte-se com mais de 15.000 moradores locais e multiplique suas vendas</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
               <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-4 py-2">
                 <Users className="w-5 h-5" />
@@ -334,7 +332,7 @@ const BusinessPlans = () => {
             </div>
 
             <div className="bg-blue-50 rounded-lg p-6">
-              <h3 className="font-semibold text-blue-900 mb-2 flex items-center">
+              <h3 className="font-semibold text-blue-900 mb-2 flex items-center text-base">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Atendimento Especializado
               </h3>
