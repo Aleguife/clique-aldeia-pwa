@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Phone, Mail, MapPin, Youtube } from 'lucide-react';
@@ -22,10 +21,11 @@ export const Footer: React.FC = () => {
             </div>
             
             {/* Description */}
-            <p className="text-gray-600 mb-4">
-              Conectando a comunidade de Aldeia da Serra. Descubra os melhores negócios locais,
-              eventos e oportunidades da nossa região.
-            </p>
+            <div className="text-gray-600 mb-4 space-y-1">
+              <p>Conectando a comunidade de Aldeia da Serra.</p>
+              <p>Descubra os melhores negócios locais,</p>
+              <p>eventos e oportunidades da nossa região.</p>
+            </div>
             
             {/* Social Media Icons */}
             <div className="flex space-x-4">
