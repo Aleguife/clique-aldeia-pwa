@@ -121,7 +121,7 @@ const BusinessPlans = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <div className="text-center space-y-6">
             <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-              Transforme seu negócio no
+              Faça seu negócio
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-green-300">crescer em Aldeia da Serra</span>
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto">
