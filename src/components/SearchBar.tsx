@@ -84,14 +84,14 @@ export const SearchBar: React.FC<SearchBarProps> = ({ variant = 'hero', classNam
   const isHeroVariant = variant === 'hero';
 
   return (
-    <div className={`relative ${className}`}>
-      <div className={`flex ${isHeroVariant ? 'w-full' : 'w-full'}`}>
-        <div className="relative flex-1">
-          <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 ${isHeroVariant ? 'w-6 h-6' : 'w-4 h-4'}`} />
+    <div className={`relative w-full ${className}`}>
+      <div className="flex w-full">
+        <div className="relative flex-1 min-w-0">
+          <Search className={`absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 ${isHeroVariant ? 'w-5 h-5 sm:w-6 sm:h-6' : 'w-4 h-4'}`} />
           <Input
             ref={inputRef}
             type="text"
-            placeholder="Buscar estabelecimentos, categorias..."
+            placeholder="Buscar estabelecimentos..."
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
@@ -102,10 +102,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({ variant = 'hero', classNam
             onKeyDown={handleKeyDown}
             className={`
               ${isHeroVariant 
-                ? 'pl-14 pr-4 py-5 text-lg rounded-l-2xl border-r-0 focus:ring-2 focus:ring-white/20 h-14' 
+                ? 'pl-12 sm:pl-14 pr-3 sm:pr-4 py-4 sm:py-5 text-base sm:text-lg rounded-l-xl sm:rounded-l-2xl border-r-0 focus:ring-2 focus:ring-white/20 h-12 sm:h-14' 
                 : 'pl-10 pr-4'
               }
               ${isHeroVariant ? 'rounded-r-none' : ''}
+              w-full
             `}
           />
         </div>
@@ -113,13 +114,14 @@ export const SearchBar: React.FC<SearchBarProps> = ({ variant = 'hero', classNam
           onClick={handleSearch}
           className={`
             ${isHeroVariant 
-              ? 'bg-white text-blue-600 hover:bg-blue-50 font-semibold px-10 py-5 text-lg rounded-l-none rounded-r-2xl border-l-0 h-14' 
-              : 'rounded-l-none'
+              ? 'bg-white text-blue-600 hover:bg-blue-50 font-semibold px-6 sm:px-10 py-4 sm:py-5 text-base sm:text-lg rounded-l-none rounded-r-xl sm:rounded-r-2xl border-l-0 h-12 sm:h-14 shrink-0' 
+              : 'rounded-l-none shrink-0'
             }
           `}
           size={isHeroVariant ? 'lg' : 'default'}
         >
-          Buscar
+          <span className="hidden sm:inline">Buscar</span>
+          <Search className="w-4 h-4 sm:hidden" />
         </Button>
       </div>
 
@@ -127,10 +129,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ variant = 'hero', classNam
       {showSuggestions && suggestions.length > 0 && (
         <div
           ref={suggestionsRef}
-          className={`
-            absolute top-full left-0 right-0 z-50 bg-white border border-gray-200 rounded-lg shadow-lg mt-1
-            ${isHeroVariant ? 'w-full' : 'w-full'}
-          `}
+          className="absolute top-full left-0 right-0 z-50 bg-white border border-gray-200 rounded-lg shadow-lg mt-1 w-full"
         >
           {suggestions.map((business, index) => (
             <div
@@ -142,10 +141,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({ variant = 'hero', classNam
               onClick={() => handleSuggestionClick(business.name)}
             >
               <div className="flex items-center space-x-3">
-                <Search className="w-4 h-4 text-gray-400" />
-                <div>
-                  <div className="font-medium text-gray-900">{business.name}</div>
-                  <div className="text-sm text-gray-500">{business.category}</div>
+                <Search className="w-4 h-4 text-gray-400 shrink-0" />
+                <div className="min-w-0 flex-1">
+                  <div className="font-medium text-gray-900 truncate">{business.name}</div>
+                  <div className="text-sm text-gray-500 truncate">{business.category}</div>
                 </div>
               </div>
             </div>

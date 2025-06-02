@@ -23,10 +23,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const showFooter = !noFooterPages.includes(location.pathname);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 flex flex-col overflow-x-hidden">
       {showNavigation && !isMobile && <HeaderNavigation />}
       
-      <main className={`flex-1 ${showNavigation && !isMobile ? 'pt-20' : ''} ${showNavigation && isMobile ? 'pb-24' : ''}`}>
+      <main className={`flex-1 w-full ${showNavigation && !isMobile ? 'pt-20' : ''} ${showNavigation && isMobile ? 'pb-24' : ''}`}>
         {children}
       </main>
       

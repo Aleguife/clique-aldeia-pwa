@@ -38,11 +38,11 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section */}
       <HeroSection categories={categories} />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 space-y-24">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-16 sm:space-y-20 lg:space-y-24">
         {/* Featured Businesses */}
         <FeaturedBusinessesSection businesses={businesses} />
 
