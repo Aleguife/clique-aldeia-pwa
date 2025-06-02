@@ -81,10 +81,10 @@ const Events = () => {
                           {event.title}
                         </h3>
                         <Badge 
-                          variant={event.type === 'comercial' ? 'default' : 'secondary'}
+                          variant={event.event_type === 'comercial' ? 'default' : 'secondary'}
                           className="shrink-0 ml-4"
                         >
-                          {event.type === 'comercial' ? 'Comercial' : 'Comunitário'}
+                          {event.event_type === 'comercial' ? 'Comercial' : 'Comunitário'}
                         </Badge>
                       </div>
 

@@ -13,7 +13,7 @@ export const BusinessDescription: React.FC<BusinessDescriptionProps> = ({ busine
       <CardContent className="p-6">
         <h2 className="text-xl font-semibold mb-4">Sobre</h2>
         <p className="text-gray-700 leading-relaxed">
-          {business.fullDescription}
+          {business.full_description}
         </p>
       </CardContent>
     </Card>

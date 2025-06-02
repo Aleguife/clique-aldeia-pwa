@@ -60,14 +60,20 @@ export const useSupabaseData = () => {
         category: establishment.categories?.name || 'Sem categoria',
         gallery: establishment.gallery || [],
         features: establishment.features || [],
-        hours: establishment.hours || {},
+        hours: establishment.hours as { [key: string]: string } || {},
         rating: Number(establishment.rating) || 0,
         reviews: establishment.reviews || 0
       }));
 
+      // Transform events data to match the Event interface
+      const transformedEvents: Event[] = eventsData.map(event => ({
+        ...event,
+        event_type: event.event_type as 'comercial' | 'comunitario'
+      }));
+
       setCategories(categoriesData || []);
       setBusinesses(transformedBusinesses);
-      setEvents(eventsData || []);
+      setEvents(transformedEvents);
     } catch (err) {
       console.error('Error fetching data:', err);
       setError(err instanceof Error ? err.message : 'Erro ao carregar dados');

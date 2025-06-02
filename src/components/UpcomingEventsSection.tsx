@@ -42,8 +42,8 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({ ev
             <CardContent className="p-6 space-y-4">
               <div className="flex items-start justify-between">
                 <h3 className="font-semibold text-lg line-clamp-2">{event.title}</h3>
-                <Badge variant={event.type === 'comercial' ? 'default' : 'secondary'} className="text-xs shrink-0 ml-2">
-                  {event.type === 'comercial' ? 'Comercial' : 'Comunitário'}
+                <Badge variant={event.event_type === 'comercial' ? 'default' : 'secondary'} className="text-xs shrink-0 ml-2">
+                  {event.event_type === 'comercial' ? 'Comercial' : 'Comunitário'}
                 </Badge>
               </div>
               
