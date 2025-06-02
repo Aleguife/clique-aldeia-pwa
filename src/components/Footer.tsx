@@ -12,9 +12,9 @@ export const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">A</span>
+                <span className="text-white font-bold text-lg">C</span>
               </div>
-              <span className="text-xl font-bold">Aldeia Connect</span>
+              <span className="text-xl font-bold">Clique Aldeia</span>
             </div>
             <p className="text-gray-300 mb-4">
               Conectando a comunidade de Aldeia da Serra. Descubra os melhores negócios locais,
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-blue-400" />
-                <span className="text-gray-300">contato@aldeiaconnect.com.br</span>
+                <span className="text-gray-300">contato@cliquealdeia.com.br</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-blue-400" />
@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 Aldeia Connect. Todos os direitos reservados.
+            © 2024 Clique Aldeia. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">

@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Check, Star, Users, TrendingUp, Phone, Mail, MapPin, ArrowLeft, Target, Search, Calendar, MessageCircle, BarChart, Shield, Zap } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
+
 const BusinessPlans = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -16,6 +17,7 @@ const BusinessPlans = () => {
     phone: '',
     message: ''
   });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
@@ -31,81 +33,125 @@ const BusinessPlans = () => {
       message: ''
     });
   };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-  const benefits = [{
-    icon: Search,
-    title: 'Maior Visibilidade',
-    description: 'Apareça nos resultados de busca quando clientes procurarem seu tipo de negócio na região.'
-  }, {
-    icon: Target,
-    title: 'Público Local',
-    description: 'Conecte-se diretamente com moradores de Aldeia da Serra que procuram seus serviços.'
-  }, {
-    icon: TrendingUp,
-    title: 'Aumento nas Vendas',
-    description: 'Empresas parceiras relatam aumento médio de 40% nas vendas após se cadastrarem.'
-  }, {
-    icon: Calendar,
-    title: 'Divulgação de Eventos',
-    description: 'Promova eventos, promoções e novidades diretamente para a comunidade local.'
-  }];
-  const howItWorks = [{
-    step: '1',
-    title: 'Cadastre seu Negócio',
-    description: 'Crie um perfil completo com fotos, horários e informações de contato.'
-  }, {
-    step: '2',
-    title: 'Seja Encontrado',
-    description: 'Apareça nos resultados quando clientes buscarem seus produtos ou serviços.'
-  }, {
-    step: '3',
-    title: 'Conecte-se com Clientes',
-    description: 'Receba contatos diretos e aumente suas vendas na comunidade local.'
-  }];
-  const plans = [{
-    name: 'Básico',
-    price: 'R$ 99',
-    period: '/mês',
-    description: 'Ideal para pequenos negócios',
-    features: ['Perfil completo do estabelecimento', 'Galeria de até 5 fotos', 'Informações de contato e horários', 'Avaliações de clientes', 'Suporte por email'],
-    highlighted: false
-  }, {
-    name: 'Profissional',
-    price: 'R$ 199',
-    period: '/mês',
-    description: 'Para negócios em crescimento',
-    features: ['Tudo do plano Básico', 'Galeria ilimitada de fotos', 'Publicação de eventos e promoções', 'Destaque na busca', 'Estatísticas de visualização', 'Suporte prioritário por WhatsApp'],
-    highlighted: true
-  }, {
-    name: 'Premium',
-    price: 'R$ 299',
-    period: '/mês',
-    description: 'Máxima visibilidade',
-    features: ['Tudo do plano Profissional', 'Banner destacado na página inicial', 'Newsletter mensal para clientes', 'Integração com redes sociais', 'Relatórios detalhados de performance', 'Suporte telefônico dedicado'],
-    highlighted: false
-  }];
-  const testimonials = [{
-    name: 'Maria Silva',
-    business: 'Salão Beleza & Charme',
-    content: 'Desde que me cadastrei no Aldeia Connect, minha agenda ficou sempre cheia. Os moradores agora me encontram facilmente!',
-    rating: 5
-  }, {
-    name: 'João Santos',
-    business: 'Restaurante Sabor Local',
-    content: 'Excelente plataforma! Aumentamos nosso delivery em 60% apenas divulgando nosso cardápio aqui.',
-    rating: 5
-  }, {
-    name: 'Ana Costa',
-    business: 'Pet Shop Amigo Fiel',
-    content: 'A visibilidade que ganhamos na região foi incrível. Recomendo para todos os empresários da Aldeia.',
-    rating: 5
-  }];
-  return <div className="min-h-screen bg-gray-50">
+
+  const benefits = [
+    {
+      icon: Search,
+      title: 'Maior Visibilidade',
+      description: 'Apareça nos resultados de busca quando clientes procurarem seu tipo de negócio na região.'
+    },
+    {
+      icon: Target,
+      title: 'Público Local',
+      description: 'Conecte-se diretamente com moradores de Aldeia da Serra que procuram seus serviços.'
+    },
+    {
+      icon: TrendingUp,
+      title: 'Aumento nas Vendas',
+      description: 'Empresas parceiras relatam aumento médio de 40% nas vendas após se cadastrarem.'
+    },
+    {
+      icon: Calendar,
+      title: 'Divulgação de Eventos',
+      description: 'Promova eventos, promoções e novidades diretamente para a comunidade local.'
+    }
+  ];
+
+  const howItWorks = [
+    {
+      step: '1',
+      title: 'Cadastre seu Negócio',
+      description: 'Crie um perfil completo com fotos, horários e informações de contato.'
+    },
+    {
+      step: '2',
+      title: 'Seja Encontrado',
+      description: 'Apareça nos resultados quando clientes buscarem seus produtos ou serviços.'
+    },
+    {
+      step: '3',
+      title: 'Conecte-se com Clientes',
+      description: 'Receba contatos diretos e aumente suas vendas na comunidade local.'
+    }
+  ];
+
+  const plans = [
+    {
+      name: 'Básico',
+      price: 'R$ 99',
+      period: '/mês',
+      description: 'Ideal para pequenos negócios',
+      features: [
+        'Perfil completo do estabelecimento',
+        'Galeria de até 5 fotos',
+        'Informações de contato e horários',
+        'Avaliações de clientes',
+        'Suporte por email'
+      ],
+      highlighted: false
+    },
+    {
+      name: 'Profissional',
+      price: 'R$ 199',
+      period: '/mês',
+      description: 'Para negócios em crescimento',
+      features: [
+        'Tudo do plano Básico',
+        'Galeria ilimitada de fotos',
+        'Publicação de eventos e promoções',
+        'Destaque na busca',
+        'Estatísticas de visualização',
+        'Suporte prioritário por WhatsApp'
+      ],
+      highlighted: true
+    },
+    {
+      name: 'Premium',
+      price: 'R$ 299',
+      period: '/mês',
+      description: 'Máxima visibilidade',
+      features: [
+        'Tudo do plano Profissional',
+        'Banner destacado na página inicial',
+        'Newsletter mensal para clientes',
+        'Integração com redes sociais',
+        'Relatórios detalhados de performance',
+        'Suporte telefônico dedicado'
+      ],
+      highlighted: false
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: 'Maria Silva',
+      business: 'Salão Beleza & Charme',
+      content: 'Desde que me cadastrei no Clique Aldeia, minha agenda ficou sempre cheia. Os moradores agora me encontram facilmente!',
+      rating: 5
+    },
+    {
+      name: 'João Santos',
+      business: 'Restaurante Sabor Local',
+      content: 'Excelente plataforma! Aumentamos nosso delivery em 60% apenas divulgando nosso cardápio aqui.',
+      rating: 5
+    },
+    {
+      name: 'Ana Costa',
+      business: 'Pet Shop Amigo Fiel',
+      content: 'A visibilidade que ganhamos na região foi incrível. Recomendo para todos os empresários da Aldeia.',
+      rating: 5
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
       {/* Back Button */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <Button variant="ghost" asChild>
@@ -126,7 +172,9 @@ const BusinessPlans = () => {
                 coração de Aldeia da Serra
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto">Conecte-se com mais de 15.000 moradores locais e multiplique suas vendas</p>
+            <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto">
+              Conecte-se com mais de 15.000 moradores locais e multiplique suas vendas
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
               <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-4 py-2">
                 <Users className="w-5 h-5" />
@@ -155,7 +203,7 @@ const BusinessPlans = () => {
         <section>
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Por que escolher o Aldeia Connect?
+              Por que escolher o Clique Aldeia?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               A plataforma que conecta seu negócio com a comunidade local
@@ -323,7 +371,7 @@ const BusinessPlans = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-blue-600" />
-                <span className="text-gray-700">contato@aldeiaconnect.com.br</span>
+                <span className="text-gray-700">contato@cliquealdeia.com.br</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-blue-600" />
@@ -381,6 +429,8 @@ const BusinessPlans = () => {
           </Card>
         </section>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default BusinessPlans;

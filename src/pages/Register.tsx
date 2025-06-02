@@ -24,7 +24,7 @@ const Register = () => {
       await register(name, email, password, userType);
       toast({
         title: "Cadastro realizado com sucesso!",
-        description: "Bem-vindo ao Aldeia Connect."
+        description: "Bem-vindo ao Clique Aldeia."
       });
       navigate('/');
     } catch (error) {
@@ -42,9 +42,9 @@ const Register = () => {
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">AC</span>
+              <span className="text-white font-bold">CA</span>
             </div>
-            <span className="text-2xl font-bold text-gray-900">Aldeia Connect</span>
+            <span className="text-2xl font-bold text-gray-900">Clique Aldeia</span>
           </Link>
         </div>
 

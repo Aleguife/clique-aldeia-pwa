@@ -29,9 +29,9 @@ export const HeaderNavigation: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">AC</span>
+              <span className="text-white font-bold text-sm">CA</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">Aldeia Connect</span>
+            <span className="text-xl font-bold text-gray-900">Clique Aldeia</span>
           </Link>
 
           {/* Navigation */}
