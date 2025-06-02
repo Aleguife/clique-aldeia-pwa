@@ -15,9 +15,10 @@ export const WhatsAppButton: React.FC = () => {
       className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 z-50 flex items-center space-x-3 group"
     >
       <MessageCircle className="w-6 h-6" />
-      <span className="hidden lg:block font-medium text-sm whitespace-nowrap">
-        Dúvidas? Fale conosco!
-      </span>
+      <div className="hidden lg:block font-medium text-sm">
+        <div>Dúvidas?</div>
+        <div>Fale conosco!</div>
+      </div>
     </a>
   );
 };

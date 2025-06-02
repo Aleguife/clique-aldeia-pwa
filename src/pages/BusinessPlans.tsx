@@ -15,7 +15,7 @@ import { WhatsAppButton } from '@/components/business-plans/WhatsAppButton';
 
 const BusinessPlans = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Back Button */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <Button variant="ghost" asChild>
@@ -29,7 +29,7 @@ const BusinessPlans = () => {
       {/* Hero Section */}
       <BusinessPlansHero />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16 flex-grow">
         {/* Benefits Section */}
         <BusinessPlansBenefits />
 
@@ -49,7 +49,7 @@ const BusinessPlans = () => {
         <BusinessPlansCTA />
       </div>
 
-      {/* Minimal Footer */}
+      {/* Minimal Footer - only this one */}
       <BusinessPlansFooter />
 
       {/* Floating WhatsApp Button */}
