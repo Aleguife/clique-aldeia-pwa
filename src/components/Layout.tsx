@@ -26,7 +26,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {showNavigation && !isMobile && <HeaderNavigation />}
       
-      <main className={`flex-1 ${showNavigation && !isMobile ? 'pt-16' : ''} ${showNavigation && isMobile ? 'pb-20' : ''}`}>
+      <main className={`flex-1 ${showNavigation && !isMobile ? 'pt-20' : ''} ${showNavigation && isMobile ? 'pb-24' : ''}`}>
         {children}
       </main>
       

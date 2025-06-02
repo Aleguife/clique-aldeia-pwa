@@ -27,28 +27,28 @@ export const BusinessPlansTestimonials: React.FC = () => {
 
   return (
     <section>
-      <div className="text-center mb-12">
-        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
           O que nossos parceiros dizem
         </h2>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-600 leading-relaxed">
           Histórias reais de sucesso de empresários da Aldeia da Serra
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {testimonials.map((testimonial, index) => (
-          <Card key={index} className="bg-white">
-            <CardContent className="pt-6">
-              <div className="flex mb-4">
+          <Card key={index} className="bg-white hover:shadow-lg transition-shadow duration-300">
+            <CardContent className="p-8">
+              <div className="flex mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
+              <p className="text-gray-700 mb-6 italic leading-relaxed">"{testimonial.content}"</p>
               <div>
                 <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                <p className="text-sm text-gray-600">{testimonial.business}</p>
+                <p className="text-sm text-gray-600 mt-1">{testimonial.business}</p>
               </div>
             </CardContent>
           </Card>

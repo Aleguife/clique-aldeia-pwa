@@ -17,7 +17,7 @@ const BusinessPlans = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Back Button */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-12">
         <Button variant="ghost" asChild>
           <Link to="/">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -29,7 +29,7 @@ const BusinessPlans = () => {
       {/* Hero Section */}
       <BusinessPlansHero />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16 flex-grow">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 space-y-24 flex-grow">
         {/* Benefits Section */}
         <BusinessPlansBenefits />
 

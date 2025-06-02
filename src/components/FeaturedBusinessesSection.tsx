@@ -15,10 +15,10 @@ export const FeaturedBusinessesSection: React.FC<FeaturedBusinessesSectionProps>
 
   return (
     <section>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-12">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Estabelecimentos em Destaque</h2>
-          <p className="text-gray-600">Conheça os favoritos da nossa comunidade</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">Estabelecimentos em Destaque</h2>
+          <p className="text-gray-600 text-lg">Conheça os favoritos da nossa comunidade</p>
         </div>
         <Button variant="outline" asChild>
           <Link to="/search">
@@ -28,7 +28,7 @@ export const FeaturedBusinessesSection: React.FC<FeaturedBusinessesSectionProps>
         </Button>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {featuredBusinesses.map((business) => (
           <BusinessCard key={business.id} business={business} />
         ))}

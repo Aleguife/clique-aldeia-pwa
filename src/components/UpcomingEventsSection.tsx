@@ -16,10 +16,10 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({ ev
 
   return (
     <section>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-12">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Próximos Eventos</h2>
-          <p className="text-gray-600">Não perca o que está acontecendo na região</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">Próximos Eventos</h2>
+          <p className="text-gray-600 text-lg">Não perca o que está acontecendo na região</p>
         </div>
         <Button variant="outline" asChild>
           <Link to="/events">
@@ -29,7 +29,7 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({ ev
         </Button>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {upcomingEvents.map((event) => (
           <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white">
             <div className="aspect-video w-full overflow-hidden">
@@ -39,7 +39,7 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({ ev
                 className="w-full h-full object-cover"
               />
             </div>
-            <CardContent className="p-4 space-y-3">
+            <CardContent className="p-6 space-y-4">
               <div className="flex items-start justify-between">
                 <h3 className="font-semibold text-lg line-clamp-2">{event.title}</h3>
                 <Badge variant={event.type === 'comercial' ? 'default' : 'secondary'} className="text-xs shrink-0 ml-2">
@@ -47,7 +47,7 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({ ev
                 </Badge>
               </div>
               
-              <div className="space-y-2 text-sm text-gray-600">
+              <div className="space-y-3 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4" />
                   <span>{new Date(event.date).toLocaleDateString('pt-BR')} às {event.time}</span>
@@ -62,7 +62,7 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({ ev
                 </div>
               </div>
               
-              <p className="text-sm text-gray-600 line-clamp-2">{event.description}</p>
+              <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">{event.description}</p>
             </CardContent>
           </Card>
         ))}

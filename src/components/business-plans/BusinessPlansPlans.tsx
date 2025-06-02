@@ -55,11 +55,11 @@ export const BusinessPlansPlans: React.FC = () => {
 
   return (
     <section>
-      <div className="text-center mb-12">
-        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
           Escolha o plano ideal para seu negócio
         </h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Todos os planos incluem tudo que você precisa para ter sucesso
         </p>
       </div>
@@ -68,14 +68,14 @@ export const BusinessPlansPlans: React.FC = () => {
         {plans.map((plan, index) => (
           <Card key={index} className={`relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${plan.highlighted ? 'ring-2 ring-blue-500 bg-gradient-to-b from-blue-50 to-white' : 'bg-white hover:shadow-lg'}`}>
             {plan.highlighted && (
-              <Badge className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-blue-500">
+              <Badge className="absolute top-6 left-1/2 transform -translate-x-1/2 bg-blue-500">
                 Mais Popular
               </Badge>
             )}
             
-            <CardHeader className="text-center space-y-4 pt-8">
+            <CardHeader className="text-center space-y-6 pt-12">
               <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <div className="flex items-baseline justify-center">
                   <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
                   {plan.period && <span className="text-gray-500 ml-1">{plan.period}</span>}
@@ -84,12 +84,12 @@ export const BusinessPlansPlans: React.FC = () => {
               </div>
             </CardHeader>
 
-            <CardContent className="space-y-6">
-              <ul className="space-y-3">
+            <CardContent className="space-y-8 p-8">
+              <ul className="space-y-4">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start space-x-3">
                     <Check className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-700 leading-relaxed">{feature}</span>
                   </li>
                 ))}
               </ul>

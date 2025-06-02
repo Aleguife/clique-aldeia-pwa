@@ -6,20 +6,20 @@ import { Phone, Mail, MapPin, MousePointer } from 'lucide-react';
 export const BusinessPlansFooter: React.FC = () => {
   return (
     <footer 
-      className="text-gray-900 mt-16"
+      className="text-gray-900 mt-20"
       style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Logo and Description */}
           <div>
-            <div className="flex items-center space-x-2 mb-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <MousePointer className="text-white w-4 h-4" />
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                <MousePointer className="text-white w-5 h-5" />
               </div>
-              <span className="text-lg font-bold uppercase">Clique Aldeia</span>
+              <span className="text-xl font-bold uppercase">Clique Aldeia</span>
             </div>
-            <div className="text-gray-600 text-sm space-y-1">
+            <div className="text-gray-600 space-y-2">
               <p>Conectando a comunidade de Aldeia da Serra.</p>
               <p>Descubra os melhores negócios locais.</p>
             </div>
@@ -27,8 +27,8 @@ export const BusinessPlansFooter: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-base font-semibold mb-3">Links Rápidos</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
+            <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-gray-600 hover:text-gray-900 transition-colors">
                   Início
@@ -49,18 +49,18 @@ export const BusinessPlansFooter: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-base font-semibold mb-3">Contato</h3>
-            <div className="space-y-2 text-sm">
-              <div className="flex items-center space-x-2">
-                <Phone className="w-3 h-3 text-blue-600" />
+            <h3 className="text-lg font-semibold mb-4">Contato</h3>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <Phone className="w-4 h-4 text-blue-600" />
                 <span className="text-gray-600">(11) 99999-9999</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-3 h-3 text-blue-600" />
+              <div className="flex items-center space-x-3">
+                <Mail className="w-4 h-4 text-blue-600" />
                 <span className="text-gray-600">contato@cliquealdeia.com.br</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-3 h-3 text-blue-600" />
+              <div className="flex items-center space-x-3">
+                <MapPin className="w-4 h-4 text-blue-600" />
                 <span className="text-gray-600">Aldeia da Serra, Barueri - SP</span>
               </div>
             </div>
@@ -68,8 +68,8 @@ export const BusinessPlansFooter: React.FC = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-300 mt-6 pt-6 text-center">
-          <p className="text-gray-500 text-xs">
+        <div className="border-t border-gray-300 mt-8 pt-8 text-center">
+          <p className="text-gray-500 text-sm">
             © 2024 Clique Aldeia. Todos os direitos reservados.
           </p>
         </div>
