@@ -8,7 +8,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Check, Star, Users, TrendingUp, Phone, Mail, MapPin, ArrowLeft, Target, Search, Calendar, MessageCircle, BarChart, Shield, Zap } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
-
 const BusinessPlans = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -17,7 +16,6 @@ const BusinessPlans = () => {
     phone: '',
     message: ''
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
@@ -33,125 +31,81 @@ const BusinessPlans = () => {
       message: ''
     });
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-
-  const benefits = [
-    {
-      icon: Search,
-      title: 'Maior Visibilidade',
-      description: 'Apareça nos resultados de busca quando clientes procurarem seu tipo de negócio na região.'
-    },
-    {
-      icon: Target,
-      title: 'Público Local',
-      description: 'Conecte-se diretamente com moradores de Aldeia da Serra que procuram seus serviços.'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Aumento nas Vendas',
-      description: 'Empresas parceiras relatam aumento médio de 40% nas vendas após se cadastrarem.'
-    },
-    {
-      icon: Calendar,
-      title: 'Divulgação de Eventos',
-      description: 'Promova eventos, promoções e novidades diretamente para a comunidade local.'
-    }
-  ];
-
-  const howItWorks = [
-    {
-      step: '1',
-      title: 'Cadastre seu Negócio',
-      description: 'Crie um perfil completo com fotos, horários e informações de contato.'
-    },
-    {
-      step: '2',
-      title: 'Seja Encontrado',
-      description: 'Apareça nos resultados quando clientes buscarem seus produtos ou serviços.'
-    },
-    {
-      step: '3',
-      title: 'Conecte-se com Clientes',
-      description: 'Receba contatos diretos e aumente suas vendas na comunidade local.'
-    }
-  ];
-
-  const plans = [
-    {
-      name: 'Básico',
-      price: 'R$ 99',
-      period: '/mês',
-      description: 'Ideal para pequenos negócios',
-      features: [
-        'Perfil completo do estabelecimento',
-        'Galeria de até 5 fotos',
-        'Informações de contato e horários',
-        'Avaliações de clientes',
-        'Suporte por email'
-      ],
-      highlighted: false
-    },
-    {
-      name: 'Profissional',
-      price: 'R$ 199',
-      period: '/mês',
-      description: 'Para negócios em crescimento',
-      features: [
-        'Tudo do plano Básico',
-        'Galeria ilimitada de fotos',
-        'Publicação de eventos e promoções',
-        'Destaque na busca',
-        'Estatísticas de visualização',
-        'Suporte prioritário por WhatsApp'
-      ],
-      highlighted: true
-    },
-    {
-      name: 'Premium',
-      price: 'R$ 299',
-      period: '/mês',
-      description: 'Máxima visibilidade',
-      features: [
-        'Tudo do plano Profissional',
-        'Banner destacado na página inicial',
-        'Newsletter mensal para clientes',
-        'Integração com redes sociais',
-        'Relatórios detalhados de performance',
-        'Suporte telefônico dedicado'
-      ],
-      highlighted: false
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: 'Maria Silva',
-      business: 'Salão Beleza & Charme',
-      content: 'Desde que me cadastrei no Clique Aldeia, minha agenda ficou sempre cheia. Os moradores agora me encontram facilmente!',
-      rating: 5
-    },
-    {
-      name: 'João Santos',
-      business: 'Restaurante Sabor Local',
-      content: 'Excelente plataforma! Aumentamos nosso delivery em 60% apenas divulgando nosso cardápio aqui.',
-      rating: 5
-    },
-    {
-      name: 'Ana Costa',
-      business: 'Pet Shop Amigo Fiel',
-      content: 'A visibilidade que ganhamos na região foi incrível. Recomendo para todos os empresários da Aldeia.',
-      rating: 5
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gray-50">
+  const benefits = [{
+    icon: Search,
+    title: 'Maior Visibilidade',
+    description: 'Apareça nos resultados de busca quando clientes procurarem seu tipo de negócio na região.'
+  }, {
+    icon: Target,
+    title: 'Público Local',
+    description: 'Conecte-se diretamente com moradores de Aldeia da Serra que procuram seus serviços.'
+  }, {
+    icon: TrendingUp,
+    title: 'Aumento nas Vendas',
+    description: 'Empresas parceiras relatam aumento médio de 40% nas vendas após se cadastrarem.'
+  }, {
+    icon: Calendar,
+    title: 'Divulgação de Eventos',
+    description: 'Promova eventos, promoções e novidades diretamente para a comunidade local.'
+  }];
+  const howItWorks = [{
+    step: '1',
+    title: 'Cadastre seu Negócio',
+    description: 'Crie um perfil completo com fotos, horários e informações de contato.'
+  }, {
+    step: '2',
+    title: 'Seja Encontrado',
+    description: 'Apareça nos resultados quando clientes buscarem seus produtos ou serviços.'
+  }, {
+    step: '3',
+    title: 'Conecte-se com Clientes',
+    description: 'Receba contatos diretos e aumente suas vendas na comunidade local.'
+  }];
+  const plans = [{
+    name: 'Básico',
+    price: 'R$ 99',
+    period: '/mês',
+    description: 'Ideal para pequenos negócios',
+    features: ['Perfil completo do estabelecimento', 'Galeria de até 5 fotos', 'Informações de contato e horários', 'Avaliações de clientes', 'Suporte por email'],
+    highlighted: false
+  }, {
+    name: 'Profissional',
+    price: 'R$ 199',
+    period: '/mês',
+    description: 'Para negócios em crescimento',
+    features: ['Tudo do plano Básico', 'Galeria ilimitada de fotos', 'Publicação de eventos e promoções', 'Destaque na busca', 'Estatísticas de visualização', 'Suporte prioritário por WhatsApp'],
+    highlighted: true
+  }, {
+    name: 'Premium',
+    price: 'R$ 299',
+    period: '/mês',
+    description: 'Máxima visibilidade',
+    features: ['Tudo do plano Profissional', 'Banner destacado na página inicial', 'Newsletter mensal para clientes', 'Integração com redes sociais', 'Relatórios detalhados de performance', 'Suporte telefônico dedicado'],
+    highlighted: false
+  }];
+  const testimonials = [{
+    name: 'Maria Silva',
+    business: 'Salão Beleza & Charme',
+    content: 'Desde que me cadastrei no Clique Aldeia, minha agenda ficou sempre cheia. Os moradores agora me encontram facilmente!',
+    rating: 5
+  }, {
+    name: 'João Santos',
+    business: 'Restaurante Sabor Local',
+    content: 'Excelente plataforma! Aumentamos nosso delivery em 60% apenas divulgando nosso cardápio aqui.',
+    rating: 5
+  }, {
+    name: 'Ana Costa',
+    business: 'Pet Shop Amigo Fiel',
+    content: 'A visibilidade que ganhamos na região foi incrível. Recomendo para todos os empresários da Aldeia.',
+    rating: 5
+  }];
+  return <div className="min-h-screen bg-gray-50">
       {/* Back Button */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <Button variant="ghost" asChild>
@@ -168,9 +122,7 @@ const BusinessPlans = () => {
           <div className="text-center space-y-6">
             <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
               Transforme seu negócio no
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-green-300">
-                coração de Aldeia da Serra
-              </span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-green-300">crescer em Aldeia da Serra</span>
             </h1>
             <p className="text-xl lg:text-2xl text-blue-100 max-w-3xl mx-auto">
               Conecte-se com mais de 15.000 moradores locais e multiplique suas vendas
@@ -178,21 +130,19 @@ const BusinessPlans = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
               <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-4 py-2">
                 <Users className="w-5 h-5" />
-                <span>+5.000 moradores ativos</span>
+                <span>+15.000 moradores</span>
               </div>
               <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-4 py-2">
                 <TrendingUp className="w-5 h-5" />
-                <span>+40% aumento médio nas vendas</span>
+                <span>+200% de visibilidade</span>
               </div>
               <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-4 py-2">
                 <Star className="w-5 h-5" />
-                <span>Líder regional em conectividade</span>
+                <span>Destaque na região</span>
               </div>
             </div>
             <div className="pt-6">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3">
-                Comece Agora Gratuitamente
-              </Button>
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3">Comece Agora</Button>
             </div>
           </div>
         </div>
@@ -293,16 +243,16 @@ const BusinessPlans = () => {
         <section className="text-center bg-gray-100 rounded-2xl p-8 lg:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">150+</div>
+              <div className="text-4xl font-bold text-blue-600 mb-2">400+</div>
               <p className="text-gray-600">Empresas Cadastradas</p>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">5.000+</div>
-              <p className="text-gray-600">Usuários Ativos</p>
+              <div className="text-4xl font-bold text-blue-600 mb-2">15.000+</div>
+              <p className="text-gray-600">Usuários</p>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">40%</div>
-              <p className="text-gray-600">Aumento Médio nas Vendas</p>
+              <div className="text-4xl font-bold text-blue-600 mb-2">Destaque-se</div>
+              <p className="text-gray-600">Aumente suas Vendas</p>
             </div>
           </div>
         </section>
@@ -339,14 +289,12 @@ const BusinessPlans = () => {
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             Pronto para fazer seu negócio crescer?
           </h2>
-          <p className="text-xl mb-8 opacity-90">
-            Junte-se a mais de 150 empresas que já estão conectadas com a comunidade
-          </p>
+          <p className="text-xl mb-8 opacity-90">Junte-se a mais de 400 empresas que já estão conectadas com a comunidade</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
               Começar Gratuitamente
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+            <Button size="lg" variant="outline" className="border-white hover:bg-white text-blue-600">
               Falar com Consultor
             </Button>
           </div>
@@ -429,8 +377,6 @@ const BusinessPlans = () => {
           </Card>
         </section>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default BusinessPlans;
