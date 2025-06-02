@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,25 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Check, 
-  Star, 
-  Users, 
-  TrendingUp, 
-  Phone, 
-  Mail, 
-  MapPin,
-  ArrowLeft,
-  Target,
-  Search,
-  Calendar,
-  MessageCircle,
-  BarChart,
-  Shield,
-  Zap
-} from 'lucide-react';
+import { Check, Star, Users, TrendingUp, Phone, Mail, MapPin, ArrowLeft, Target, Search, Calendar, MessageCircle, BarChart, Shield, Zap } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
-
 const BusinessPlans = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -34,7 +16,6 @@ const BusinessPlans = () => {
     phone: '',
     message: ''
   });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
@@ -50,125 +31,81 @@ const BusinessPlans = () => {
       message: ''
     });
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-
-  const benefits = [
-    {
-      icon: Search,
-      title: 'Maior Visibilidade',
-      description: 'Apareça nos resultados de busca quando clientes procurarem seu tipo de negócio na região.'
-    },
-    {
-      icon: Target,
-      title: 'Público Local',
-      description: 'Conecte-se diretamente com moradores de Aldeia da Serra que procuram seus serviços.'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Aumento nas Vendas',
-      description: 'Empresas parceiras relatam aumento médio de 40% nas vendas após se cadastrarem.'
-    },
-    {
-      icon: Calendar,
-      title: 'Divulgação de Eventos',
-      description: 'Promova eventos, promoções e novidades diretamente para a comunidade local.'
-    }
-  ];
-
-  const howItWorks = [
-    {
-      step: '1',
-      title: 'Cadastre seu Negócio',
-      description: 'Crie um perfil completo com fotos, horários e informações de contato.'
-    },
-    {
-      step: '2',
-      title: 'Seja Encontrado',
-      description: 'Apareça nos resultados quando clientes buscarem seus produtos ou serviços.'
-    },
-    {
-      step: '3',
-      title: 'Conecte-se com Clientes',
-      description: 'Receba contatos diretos e aumente suas vendas na comunidade local.'
-    }
-  ];
-
-  const plans = [
-    {
-      name: 'Básico',
-      price: 'R$ 99',
-      period: '/mês',
-      description: 'Ideal para pequenos negócios',
-      features: [
-        'Perfil completo do estabelecimento',
-        'Galeria de até 5 fotos',
-        'Informações de contato e horários',
-        'Avaliações de clientes',
-        'Suporte por email'
-      ],
-      highlighted: false
-    },
-    {
-      name: 'Profissional',
-      price: 'R$ 199',
-      period: '/mês',
-      description: 'Para negócios em crescimento',
-      features: [
-        'Tudo do plano Básico',
-        'Galeria ilimitada de fotos',
-        'Publicação de eventos e promoções',
-        'Destaque na busca',
-        'Estatísticas de visualização',
-        'Suporte prioritário por WhatsApp'
-      ],
-      highlighted: true
-    },
-    {
-      name: 'Premium',
-      price: 'R$ 299',
-      period: '/mês',
-      description: 'Máxima visibilidade',
-      features: [
-        'Tudo do plano Profissional',
-        'Banner destacado na página inicial',
-        'Newsletter mensal para clientes',
-        'Integração com redes sociais',
-        'Relatórios detalhados de performance',
-        'Suporte telefônico dedicado'
-      ],
-      highlighted: false
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: 'Maria Silva',
-      business: 'Salão Beleza & Charme',
-      content: 'Desde que me cadastrei no Aldeia Connect, minha agenda ficou sempre cheia. Os moradores agora me encontram facilmente!',
-      rating: 5
-    },
-    {
-      name: 'João Santos',
-      business: 'Restaurante Sabor Local',
-      content: 'Excelente plataforma! Aumentamos nosso delivery em 60% apenas divulgando nosso cardápio aqui.',
-      rating: 5
-    },
-    {
-      name: 'Ana Costa',
-      business: 'Pet Shop Amigo Fiel',
-      content: 'A visibilidade que ganhamos na região foi incrível. Recomendo para todos os empresários da Aldeia.',
-      rating: 5
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gray-50">
+  const benefits = [{
+    icon: Search,
+    title: 'Maior Visibilidade',
+    description: 'Apareça nos resultados de busca quando clientes procurarem seu tipo de negócio na região.'
+  }, {
+    icon: Target,
+    title: 'Público Local',
+    description: 'Conecte-se diretamente com moradores de Aldeia da Serra que procuram seus serviços.'
+  }, {
+    icon: TrendingUp,
+    title: 'Aumento nas Vendas',
+    description: 'Empresas parceiras relatam aumento médio de 40% nas vendas após se cadastrarem.'
+  }, {
+    icon: Calendar,
+    title: 'Divulgação de Eventos',
+    description: 'Promova eventos, promoções e novidades diretamente para a comunidade local.'
+  }];
+  const howItWorks = [{
+    step: '1',
+    title: 'Cadastre seu Negócio',
+    description: 'Crie um perfil completo com fotos, horários e informações de contato.'
+  }, {
+    step: '2',
+    title: 'Seja Encontrado',
+    description: 'Apareça nos resultados quando clientes buscarem seus produtos ou serviços.'
+  }, {
+    step: '3',
+    title: 'Conecte-se com Clientes',
+    description: 'Receba contatos diretos e aumente suas vendas na comunidade local.'
+  }];
+  const plans = [{
+    name: 'Básico',
+    price: 'R$ 99',
+    period: '/mês',
+    description: 'Ideal para pequenos negócios',
+    features: ['Perfil completo do estabelecimento', 'Galeria de até 5 fotos', 'Informações de contato e horários', 'Avaliações de clientes', 'Suporte por email'],
+    highlighted: false
+  }, {
+    name: 'Profissional',
+    price: 'R$ 199',
+    period: '/mês',
+    description: 'Para negócios em crescimento',
+    features: ['Tudo do plano Básico', 'Galeria ilimitada de fotos', 'Publicação de eventos e promoções', 'Destaque na busca', 'Estatísticas de visualização', 'Suporte prioritário por WhatsApp'],
+    highlighted: true
+  }, {
+    name: 'Premium',
+    price: 'R$ 299',
+    period: '/mês',
+    description: 'Máxima visibilidade',
+    features: ['Tudo do plano Profissional', 'Banner destacado na página inicial', 'Newsletter mensal para clientes', 'Integração com redes sociais', 'Relatórios detalhados de performance', 'Suporte telefônico dedicado'],
+    highlighted: false
+  }];
+  const testimonials = [{
+    name: 'Maria Silva',
+    business: 'Salão Beleza & Charme',
+    content: 'Desde que me cadastrei no Aldeia Connect, minha agenda ficou sempre cheia. Os moradores agora me encontram facilmente!',
+    rating: 5
+  }, {
+    name: 'João Santos',
+    business: 'Restaurante Sabor Local',
+    content: 'Excelente plataforma! Aumentamos nosso delivery em 60% apenas divulgando nosso cardápio aqui.',
+    rating: 5
+  }, {
+    name: 'Ana Costa',
+    business: 'Pet Shop Amigo Fiel',
+    content: 'A visibilidade que ganhamos na região foi incrível. Recomendo para todos os empresários da Aldeia.',
+    rating: 5
+  }];
+  return <div className="min-h-screen bg-gray-50">
       {/* Back Button */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <Button variant="ghost" asChild>
@@ -228,8 +165,7 @@ const BusinessPlans = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+            {benefits.map((benefit, index) => <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="pt-6">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <benefit.icon className="w-6 h-6 text-blue-600" />
@@ -237,8 +173,7 @@ const BusinessPlans = () => {
                   <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
                   <p className="text-gray-600">{benefit.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </section>
 
@@ -254,15 +189,13 @@ const BusinessPlans = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {howItWorks.map((step, index) => (
-              <div key={index} className="text-center">
+            {howItWorks.map((step, index) => <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {step.step}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
                 <p className="text-gray-600">{step.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </section>
 
@@ -278,20 +211,10 @@ const BusinessPlans = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {plans.map((plan, index) => (
-              <Card 
-                key={index} 
-                className={`relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
-                  plan.highlighted 
-                    ? 'ring-2 ring-blue-500 bg-gradient-to-b from-blue-50 to-white' 
-                    : 'bg-white hover:shadow-lg'
-                }`}
-              >
-                {plan.highlighted && (
-                  <Badge className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-blue-500">
+            {plans.map((plan, index) => <Card key={index} className={`relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${plan.highlighted ? 'ring-2 ring-blue-500 bg-gradient-to-b from-blue-50 to-white' : 'bg-white hover:shadow-lg'}`}>
+                {plan.highlighted && <Badge className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-blue-500">
                     Mais Popular
-                  </Badge>
-                )}
+                  </Badge>}
                 
                 <CardHeader className="text-center space-y-4 pt-8">
                   <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
@@ -306,27 +229,17 @@ const BusinessPlans = () => {
 
                 <CardContent className="space-y-6">
                   <ul className="space-y-3">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start space-x-3">
+                    {plan.features.map((feature, featureIndex) => <li key={featureIndex} className="flex items-start space-x-3">
                         <Check className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                         <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
+                      </li>)}
                   </ul>
 
-                  <Button 
-                    className={`w-full ${
-                      plan.highlighted 
-                        ? 'bg-blue-600 hover:bg-blue-700' 
-                        : ''
-                    }`}
-                    variant={plan.highlighted ? 'default' : 'outline'}
-                  >
+                  <Button className={`w-full ${plan.highlighted ? 'bg-blue-600 hover:bg-blue-700' : ''}`} variant={plan.highlighted ? 'default' : 'outline'}>
                     Começar Agora
                   </Button>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </section>
 
@@ -360,13 +273,10 @@ const BusinessPlans = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-white">
+            {testimonials.map((testimonial, index) => <Card key={index} className="bg-white">
                 <CardContent className="pt-6">
                   <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                    ))}
+                    {[...Array(testimonial.rating)].map((_, i) => <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />)}
                   </div>
                   <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
                   <div>
@@ -374,8 +284,7 @@ const BusinessPlans = () => {
                     <p className="text-sm text-gray-600">{testimonial.business}</p>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </section>
 
@@ -429,10 +338,7 @@ const BusinessPlans = () => {
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Atendimento Especializado
               </h3>
-              <p className="text-blue-800">
-                Nossa equipe conhece profundamente o mercado local e pode orientar 
-                sobre as melhores estratégias para seu tipo de negócio.
-              </p>
+              <p className="text-blue-800">Comece com o plano Básico e evolua conforme seu negócio cresce. Você pode fazer upgrade a qualquer momento!</p>
             </div>
           </div>
 
@@ -445,64 +351,28 @@ const BusinessPlans = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Nome completo</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Seu nome"
-                      required
-                    />
+                    <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Seu nome" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="business">Nome do negócio</Label>
-                    <Input
-                      id="business"
-                      name="business"
-                      value={formData.business}
-                      onChange={handleChange}
-                      placeholder="Sua empresa"
-                      required
-                    />
+                    <Input id="business" name="business" value={formData.business} onChange={handleChange} placeholder="Sua empresa" required />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="email">E-mail</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="seu@email.com"
-                      required
-                    />
+                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="seu@email.com" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone">Telefone</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="(11) 99999-9999"
-                      required
-                    />
+                    <Input id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="(11) 99999-9999" required />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="message">Mensagem</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Conte-nos sobre seu negócio e como podemos ajudar..."
-                    rows={4}
-                  />
+                  <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Conte-nos sobre seu negócio e como podemos ajudar..." rows={4} />
                 </div>
 
                 <Button type="submit" className="w-full">
@@ -513,8 +383,6 @@ const BusinessPlans = () => {
           </Card>
         </section>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default BusinessPlans;
