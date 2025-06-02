@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
-import { ChevronDown, User, LogOut, Settings } from 'lucide-react';
+import { ChevronDown, User, LogOut, Settings, MousePointer } from 'lucide-react';
 
 const navigationItems = [
   { path: '/', label: 'Início' },
@@ -28,19 +28,19 @@ export const HeaderNavigation: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo - Modernizado */}
+          {/* Logo - Updated with MousePointer icon */}
           <Link 
             to="/" 
             className="flex items-center space-x-3 group transition-all duration-300 hover:scale-105"
           >
             <div className="relative">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-                <span className="text-white font-bold text-lg tracking-tight">CA</span>
+                <MousePointer className="text-white w-5 h-5" />
               </div>
               <div className="absolute -inset-1 bg-gradient-to-br from-blue-600 to-green-600 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur"></div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900 tracking-tight">Clique Aldeia</span>
+              <span className="text-xl font-bold text-gray-900 tracking-tight uppercase">Clique Aldeia</span>
               <span className="text-xs text-gray-500 font-medium -mt-1">Conectando comunidades</span>
             </div>
           </Link>
