@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { User, Session } from '@supabase/supabase-js';
@@ -43,7 +42,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        console.log('Auth state changed:', event, session?.user?.id);
         setSession(session);
         
         if (session?.user) {
@@ -68,8 +66,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
               user_type: userType,
               avatar: profile.avatar || undefined
             });
-          } else {
-            console.error('Error fetching profile:', error);
           }
         } else {
           setUser(null);

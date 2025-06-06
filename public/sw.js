@@ -13,6 +13,9 @@ self.addEventListener('install', (event) => {
       .then((cache) => {
         return cache.addAll(urlsToCache);
       })
+      .catch(() => {
+        // Silent error handling for production
+      })
   );
 });
 
@@ -24,6 +27,9 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
         return fetch(event.request);
+      })
+      .catch(() => {
+        // Silent error handling for production
       })
   );
 });
