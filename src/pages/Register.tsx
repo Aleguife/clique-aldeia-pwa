@@ -14,25 +14,33 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState<'morador' | 'estabelecimento'>('morador');
-  const { register, isLoading } = useAuth();
+  const { register, isLoading, user } = useAuth();
   const navigate = useNavigate();
+
+  // Redirect if already logged in
+  React.useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    try {
-      await register(name, email, password, userType);
-      toast({
-        title: "Cadastro realizado com sucesso!",
-        description: "Bem-vindo ao Clique Aldeia."
-      });
-      navigate('/');
-    } catch (error) {
+    const { error } = await register(name, email, password, userType);
+    
+    if (error) {
       toast({
         title: "Erro no cadastro",
-        description: "Tente novamente em alguns instantes.",
+        description: error,
         variant: "destructive"
       });
+    } else {
+      toast({
+        title: "Cadastro realizado com sucesso!",
+        description: "Verifique seu email para confirmar a conta e fazer login."
+      });
+      // Don't auto-navigate, let user confirm email first
     }
   };
 
@@ -87,6 +95,7 @@ const Register = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Crie uma senha"
                   required
+                  minLength={6}
                 />
               </div>
 

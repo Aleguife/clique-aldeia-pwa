@@ -34,7 +34,7 @@ const Profile = () => {
   }
 
   const getUserTypeIcon = () => {
-    switch (user.type) {
+    switch (user.user_type) {
       case 'estabelecimento':
         return <Building className="w-4 h-4" />;
       default:
@@ -43,7 +43,7 @@ const Profile = () => {
   };
 
   const getUserTypeLabel = () => {
-    switch (user.type) {
+    switch (user.user_type) {
       case 'estabelecimento':
         return 'Estabelecimento';
       case 'admin':
@@ -93,7 +93,7 @@ const Profile = () => {
             </CardContent>
           </Card>
 
-          {user.type === 'estabelecimento' && (
+          {user.user_type === 'estabelecimento' && (
             <Card className="bg-white">
               <CardHeader>
                 <CardTitle className="text-lg">Negócio</CardTitle>

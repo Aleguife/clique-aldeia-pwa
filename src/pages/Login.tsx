@@ -11,25 +11,33 @@ import { toast } from '@/hooks/use-toast';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, isLoading } = useAuth();
+  const { login, isLoading, user } = useAuth();
   const navigate = useNavigate();
+
+  // Redirect if already logged in
+  React.useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    try {
-      await login(email, password);
+    const { error } = await login(email, password);
+    
+    if (error) {
+      toast({
+        title: "Erro no login",
+        description: error,
+        variant: "destructive"
+      });
+    } else {
       toast({
         title: "Login realizado com sucesso!",
         description: "Bem-vindo de volta ao Clique Aldeia."
       });
       navigate('/');
-    } catch (error) {
-      toast({
-        title: "Erro no login",
-        description: "Verifique suas credenciais e tente novamente.",
-        variant: "destructive"
-      });
     }
   };
 
