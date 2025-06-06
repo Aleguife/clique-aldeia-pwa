@@ -1,117 +1,102 @@
 
-import React, { useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
-import { useBusinessData } from '@/hooks/useBusinessData';
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { supabase } from '@/integrations/supabase/client';
 import { BusinessHeader } from '@/components/BusinessHeader';
-import { BusinessActions } from '@/components/BusinessActions';
 import { BusinessDescription } from '@/components/BusinessDescription';
-import { BusinessFeatures } from '@/components/BusinessFeatures';
-import { BusinessGallery } from '@/components/BusinessGallery';
 import { BusinessContactInfo } from '@/components/BusinessContactInfo';
 import { BusinessHours } from '@/components/BusinessHours';
-import { createSlug } from '@/lib/slug';
+import { BusinessFeatures } from '@/components/BusinessFeatures';
+import { BusinessGallery } from '@/components/BusinessGallery';
+import { BusinessActions } from '@/components/BusinessActions';
+import { getBusinessBySlug } from '@/lib/slug';
+import type { Business } from '@/types/business';
 
 const Business = () => {
-  const { id, slug } = useParams<{ id?: string; slug?: string }>();
-  const navigate = useNavigate();
-  const { getBusinessById, getBusinessBySlug, loading, error } = useBusinessData();
-  
-  let business = null;
-  
-  // Se temos um slug, usar busca por slug
-  if (slug) {
-    business = getBusinessBySlug(slug);
-  }
-  // Se temos um ID (rota antiga), usar busca por ID
-  else if (id) {
-    business = getBusinessById(id);
-    // Redirecionar para nova URL se encontrou o estabelecimento
-    if (business && !loading) {
-      const newSlug = createSlug(business.name);
-      navigate(`/empresa/${newSlug}.html`, { replace: true });
-      return null;
-    }
-  }
+  const { slug, id } = useParams();
 
-  if (loading) {
+  const { data: business, isLoading, error } = useQuery({
+    queryKey: ['business', slug || id],
+    queryFn: async () => {
+      let query = supabase
+        .from('establishments')
+        .select(`
+          *,
+          categories(name)
+        `);
+
+      if (slug) {
+        // Se for um slug (URL /empresa/nome.html), buscar pelo nome
+        const businessName = getBusinessBySlug(slug.replace('.html', ''));
+        if (!businessName) {
+          throw new Error('Estabelecimento não encontrado');
+        }
+        query = query.eq('name', businessName);
+      } else if (id) {
+        // Se for um ID (URL /business/:id), buscar pelo ID
+        query = query.eq('id', id);
+      } else {
+        throw new Error('Parâmetro inválido');
+      }
+
+      const { data, error } = await query.single();
+      
+      if (error) throw error;
+      
+      return {
+        ...data,
+        category: data.categories?.name
+      } as Business & { category: string };
+    },
+  });
+
+  if (isLoading) {
     return (
-      <div className="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex items-center justify-center py-12">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-          <span className="ml-3">Carregando estabelecimento...</span>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Carregando...</p>
         </div>
       </div>
     );
   }
 
-  if (error) {
+  if (error || !business) {
     return (
-      <div className="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="text-center py-12">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Erro ao carregar dados</h2>
-          <p className="text-gray-600 mb-4">{error}</p>
-          <Button onClick={() => window.location.reload()}>
-            Tentar novamente
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
-  if (!business) {
-    return (
-      <div className="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="text-center py-12">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
-            Estabelecimento não encontrado
-          </h1>
-          <Button asChild>
-            <Link to="/search">Voltar para busca</Link>
-          </Button>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Estabelecimento não encontrado</h2>
+          <p className="text-gray-600 mb-4">O estabelecimento que você procura não existe ou foi removido.</p>
+          <a href="/" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Voltar ao início
+          </a>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Back Button */}
-      <Button variant="ghost" className="mb-6" asChild>
-        <Link to="/search">
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Voltar
-        </Link>
-      </Button>
-
-      <div className="space-y-8">
-        {/* Header */}
-        <BusinessHeader business={business} />
-
-        {/* Action Buttons */}
-        <BusinessActions business={business} />
-
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
+          {/* Coluna principal */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Description */}
+            <BusinessHeader business={business} />
             <BusinessDescription business={business} />
-
-            {/* Features */}
-            <BusinessFeatures business={business} />
-
-            {/* Gallery */}
-            <BusinessGallery business={business} />
+            {business.gallery && business.gallery.length > 0 && (
+              <BusinessGallery images={business.gallery} businessName={business.name} />
+            )}
           </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Contact Info */}
+            <BusinessActions business={business} />
             <BusinessContactInfo business={business} />
-
-            {/* Hours */}
-            <BusinessHours business={business} />
+            {business.hours && <BusinessHours hours={business.hours} />}
+            {business.features && business.features.length > 0 && (
+              <BusinessFeatures features={business.features} />
+            )}
           </div>
         </div>
       </div>
