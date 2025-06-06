@@ -55,11 +55,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             .single();
 
           if (profile && !error) {
+            // Ensure user_type is one of the expected values, with fallback
+            const validUserTypes: UserProfile['user_type'][] = ['morador', 'estabelecimento', 'admin'];
+            const userType = validUserTypes.includes(profile.user_type as UserProfile['user_type']) 
+              ? profile.user_type as UserProfile['user_type']
+              : 'morador';
+
             setUser({
               id: profile.id,
               name: profile.name,
               email: profile.email,
-              user_type: profile.user_type || 'morador',
+              user_type: userType,
               avatar: profile.avatar || undefined
             });
           } else {
