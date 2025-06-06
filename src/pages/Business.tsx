@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { useBusinessData } from '@/hooks/useBusinessData';
@@ -11,12 +11,29 @@ import { BusinessFeatures } from '@/components/BusinessFeatures';
 import { BusinessGallery } from '@/components/BusinessGallery';
 import { BusinessContactInfo } from '@/components/BusinessContactInfo';
 import { BusinessHours } from '@/components/BusinessHours';
+import { createSlug } from '@/lib/slug';
 
 const Business = () => {
-  const { id } = useParams<{ id: string }>();
-  const { getBusinessById, loading, error } = useBusinessData();
+  const { id, slug } = useParams<{ id?: string; slug?: string }>();
+  const navigate = useNavigate();
+  const { getBusinessById, getBusinessBySlug, loading, error } = useBusinessData();
   
-  const business = id ? getBusinessById(id) : null;
+  let business = null;
+  
+  // Se temos um slug, usar busca por slug
+  if (slug) {
+    business = getBusinessBySlug(slug);
+  }
+  // Se temos um ID (rota antiga), usar busca por ID
+  else if (id) {
+    business = getBusinessById(id);
+    // Redirecionar para nova URL se encontrou o estabelecimento
+    if (business && !loading) {
+      const newSlug = createSlug(business.name);
+      navigate(`/empresa/${newSlug}.html`, { replace: true });
+      return null;
+    }
+  }
 
   if (loading) {
     return (

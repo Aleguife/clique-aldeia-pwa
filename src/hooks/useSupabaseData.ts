@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Business, Event, Category } from '@/types/business';
+import { slugToSearchTerm } from '@/lib/slug';
 
 export const useSupabaseData = () => {
   const [businesses, setBusinesses] = useState<Business[]>([]);
@@ -86,6 +87,18 @@ export const useSupabaseData = () => {
     return businesses.find(business => business.id === id);
   };
 
+  const getBusinessBySlug = (slug: string) => {
+    // Remove .html se existir
+    const cleanSlug = slug.replace('.html', '');
+    const searchTerm = slugToSearchTerm(cleanSlug);
+    
+    // Busca por nome (aproximada)
+    return businesses.find(business => 
+      business.name.toLowerCase().includes(searchTerm) ||
+      business.name.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').includes(searchTerm)
+    );
+  };
+
   const getEventsByType = (type?: 'comercial' | 'comunitario') => {
     if (!type) return events;
     return events.filter(event => event.event_type === type);
@@ -102,6 +115,7 @@ export const useSupabaseData = () => {
     loading,
     error,
     getBusinessById,
+    getBusinessBySlug,
     getEventsByType,
     refreshData
   };

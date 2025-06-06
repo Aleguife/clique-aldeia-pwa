@@ -6,12 +6,16 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Star, Phone, MessageCircle } from 'lucide-react';
 import { Business } from '@/hooks/useBusinessData';
+import { createSlug } from '@/lib/slug';
 
 interface BusinessCardProps {
   business: Business;
 }
 
 export const BusinessCard: React.FC<BusinessCardProps> = ({ business }) => {
+  const businessSlug = createSlug(business.name);
+  const businessUrl = `/empresa/${businessSlug}.html`;
+
   const handleWhatsApp = (e: React.MouseEvent) => {
     e.preventDefault();
     window.open(`https://wa.me/${business.whatsapp}`, '_blank');
@@ -24,7 +28,7 @@ export const BusinessCard: React.FC<BusinessCardProps> = ({ business }) => {
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white">
-      <Link to={`/business/${business.id}`}>
+      <Link to={businessUrl}>
         <div className="aspect-video w-full overflow-hidden">
           <img
             src={business.image}
@@ -37,7 +41,7 @@ export const BusinessCard: React.FC<BusinessCardProps> = ({ business }) => {
       <CardContent className="p-4 space-y-3">
         <div className="space-y-2">
           <div className="flex items-start justify-between">
-            <Link to={`/business/${business.id}`}>
+            <Link to={businessUrl}>
               <h3 className="font-semibold text-lg hover:text-blue-600 transition-colors line-clamp-1">
                 {business.name}
               </h3>

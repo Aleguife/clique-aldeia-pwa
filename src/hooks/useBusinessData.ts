@@ -12,6 +12,7 @@ export const useBusinessData = () => {
     loading,
     error,
     getBusinessById,
+    getBusinessBySlug,
     getEventsByType,
     refreshData
   } = useSupabaseData();
@@ -36,6 +37,7 @@ export const useBusinessData = () => {
     selectedCategory,
     setSelectedCategory,
     getBusinessById,
+    getBusinessBySlug,
     getEventsByType,
     refreshData
   };
