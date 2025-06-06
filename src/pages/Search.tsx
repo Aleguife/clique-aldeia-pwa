@@ -7,17 +7,11 @@ import { useBusinessData } from '@/hooks/useBusinessData';
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const {
-    filteredBusinesses,
-    searchTerm,
-    setSearchTerm,
-    selectedCategory,
-    setSelectedCategory,
-    loading,
-    error
-  } = useBusinessData();
+  const { businesses, categories, loading, error } = useBusinessData();
 
-  // Additional filter states
+  // Search and filter states
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('relevance');
   const [minRating, setMinRating] = useState(0);
   const [openNow, setOpenNow] = useState(false);
@@ -45,7 +39,7 @@ const Search = () => {
     if (openParam === 'true') {
       setOpenNow(true);
     }
-  }, [searchParams, setSearchTerm, setSelectedCategory]);
+  }, [searchParams]);
 
   // Update URL when filters change
   useEffect(() => {
@@ -60,9 +54,23 @@ const Search = () => {
     setSearchParams(params);
   }, [searchTerm, selectedCategory, sortBy, minRating, openNow, setSearchParams]);
 
-  // Apply additional filtering and sorting
+  // Apply filtering and sorting
   const getFilteredAndSortedBusinesses = () => {
-    let filtered = [...filteredBusinesses];
+    let filtered = [...businesses];
+
+    // Apply search filter
+    if (searchTerm) {
+      filtered = filtered.filter(business =>
+        business.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        business.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        business.category?.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Apply category filter
+    if (selectedCategory) {
+      filtered = filtered.filter(business => business.category === selectedCategory);
+    }
 
     // Apply rating filter
     if (minRating > 0) {

@@ -2,13 +2,12 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Clock } from 'lucide-react';
-import { Business } from '@/hooks/useBusinessData';
 
 interface BusinessHoursProps {
-  business: Business;
+  hours: { [key: string]: string };
 }
 
-export const BusinessHours: React.FC<BusinessHoursProps> = ({ business }) => {
+export const BusinessHours: React.FC<BusinessHoursProps> = ({ hours }) => {
   return (
     <Card>
       <CardContent className="p-6 space-y-4">
@@ -18,11 +17,11 @@ export const BusinessHours: React.FC<BusinessHoursProps> = ({ business }) => {
         </div>
         
         <div className="space-y-2">
-          {Object.entries(business.hours).map(([day, hours]) => (
+          {Object.entries(hours).map(([day, time]) => (
             <div key={day} className="flex justify-between items-center">
               <span className="text-gray-700">{day}</span>
-              <span className={`text-sm ${hours === 'Fechado' ? 'text-red-600' : 'text-gray-600'}`}>
-                {hours}
+              <span className={`text-sm ${time === 'Fechado' ? 'text-red-600' : 'text-gray-600'}`}>
+                {time}
               </span>
             </div>
           ))}

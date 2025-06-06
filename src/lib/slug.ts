@@ -10,6 +10,13 @@ export const generateSlug = (name: string): string => {
     .trim();
 };
 
+export const slugToSearchTerm = (slug: string): string => {
+  return slug
+    .replace(/-/g, ' ')
+    .toLowerCase()
+    .trim();
+};
+
 export const businessSlugMap: { [key: string]: string } = {
   'studio-bella-aldeia': 'Studio Bella Aldeia',
   'barbearia-villa-premium': 'Barbearia Villa Premium',

@@ -43,13 +43,27 @@ export interface Category {
 }
 
 export const useBusinessData = () => {
-  const { data, loading, error } = useSupabaseData();
+  const { 
+    businesses, 
+    events, 
+    categories, 
+    loading, 
+    error,
+    getBusinessById,
+    getBusinessBySlug,
+    getEventsByType,
+    refreshData
+  } = useSupabaseData();
   
   return {
-    businesses: data?.businesses || [],
-    events: data?.events || [],
-    categories: data?.categories || [],
+    businesses: businesses || [],
+    events: events || [],
+    categories: categories || [],
     loading,
-    error
+    error,
+    getBusinessById,
+    getBusinessBySlug,
+    getEventsByType,
+    refreshData
   };
 };
